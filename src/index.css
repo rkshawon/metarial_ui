@@ -1,0 +1,218 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Public sans;
+}
+
+body {
+  font-family: "Public Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.drawer_scrollbar::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 5px;
+}
+
+.drawer_scrollbar::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.drawer_scrollbar::-webkit-scrollbar-thumb {
+  background-color: lightgray;
+  outline: 1px solid slategrey;
+}
+h1 {
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+  color: #fff;
+  margin: 30px 0px;
+  text-align: center;
+}
+h2 {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+  margin: 20px 0px;
+}
+h3 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 26px;
+  margin: 20px 0px;
+}
+h4 {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px;
+}
+h5 {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px;
+  margin: 0;
+}
+h6 {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 2px;
+  margin: 20px 0px;
+}
+a {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  color: #1890ff;
+  text-decoration: none;
+}
+small {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 26px;
+  margin: 0;
+  /* or 260% */
+
+  color: #9d9d9d;
+}
+p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 30px;
+  /* or 214% */
+
+  color: #3e3e3e;
+}
+input[type="checkbox"][id^="myCheckbox"] {
+  display: none;
+}
+label {
+  padding: 10px;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+label:before {
+  background-color: white;
+  color: white;
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+.w-full {
+  width: 100%;
+}
+.flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.flex {
+  display: flex;
+  align-items: baseline;
+}
+
+/* .Mui-selected {
+  background-color: rgba(142, 65, 254, 0.11) !important;
+  color: #8d40ff !important;
+} */
+.h-100vh {
+  height: calc(100vh-123px);
+}
+.css-ctkfgi-MuiFormControl-root-MuiTextField-root {
+  /* padding: 0px !important; */
+}
+.css-1aquho2-MuiTabs-indicator {
+  background-color: #8d40ff !important;
+}
+/* .Mui-selected {
+  background-color: #fff !important;
+  color: #8d40ff !important;
+  font-weight: bold !important;
+} */
+.css-heg063-MuiTabs-flexContainer {
+  background-color: #eeeeee !important;
+  border-radius: 10px 10px 0px 0px !important;
+}
+.hide_scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.css-ffi4rr-MuiInputBase-input-MuiOutlinedInput-input {
+  font-size: 12px !important;
+}
+.css-1y77tut-MuiInputBase-input-MuiOutlinedInput-input {
+  font-size: 12px !important;
+}
+/* .sidebar_styles{
+height:calc(100vh-123px);
+overflow:hidden
+} */
+/* .children_styles{
+  height:calc(100vh-123px);
+  overflow-y:scroll;
+} */
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+  border-radius: 10px !important;
+}
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:focus {
+  outline: none;
+  border: 4px solid #8d40ff !important;
+  border-radius: 10px !important;
+}
+.css-sox5kk-MuiBackdrop-root {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+}
+.css-13iyir2-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: #9155fd !important;
+}
+.css-1oex39v-MuiButtonBase-root-MuiCheckbox-root {
+  color: #bfbfbf !important;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(170, 174, 179);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(133, 133, 133);
+}
+
+/* ::-webkit-scrollbar-button {
+  height: 80px;
+} */

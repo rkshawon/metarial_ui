@@ -1,0 +1,31 @@
+.signin_left, .signup_left {
+  background: linear-gradient(155.54deg, #8c41ff 15.63%, #1890ff 85.45%);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo{
+    text-align: center;
+    margin-bottom: 70px;
+}
+.signin_right{
+    margin:50px 100px;
+}
+.signup_right{
+    overflow:hidden;
+    margin:0px 100px;
+}
+.signin_right, .signup_right{
+    width:100%;
+    max-width:600px;
+    
+}
+.button_part{
+    margin:15px 0px;
+    width:100%;
+    text-align: center;
+}
+.sm_title{
+    color:#9D9D9D;
+}
