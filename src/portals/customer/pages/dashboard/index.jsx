@@ -8,12 +8,11 @@ import Welcome from "./components/Welcome";
 import WelcomeModal from "./components/WelcomeModal";
 
 export default function Dashboard() {
-
   return (
     <AppLayout>
       <Box sx={{ padding: "20px" }}>
-        <Box>
-         <WelcomeModal />
+        <Box sx={{ marginBottom: "2em" }}>
+          <WelcomeModal />
           <Breadcrumbs
             aria-label="breadcrumb"
             sx={{ color: "#212B36", fontSize: "14px" }}

@@ -1,6 +1,6 @@
 import ReactApexChart from "react-apexcharts";
 import React from "react";
-import "./incomeChart.css";
+import "./homepageCharts.css";
 
 export default class IncomeChart extends React.Component {
   constructor(props) {

@@ -10,13 +10,15 @@ export default function Overview() {
         <h4 className={styles.overview_title}>Overview</h4>
         <small>Today</small>
       </div>
-      <Grid container spacing={6}>
+      <Grid container spacing={4}>
         {overview_cards.map((overview) => (
-          <Grid item xs={2.4} >
+          <Grid item xs={2.4}>
             <div key={overview.id} className={styles.overview_cards}>
-              <span style={{color:"#535353"}}>{overview.icon}</span>
+              <span style={{ color: "#535353" }}>{overview.icon}</span>
               <h4 className={styles.overview_title}>{overview.title}</h4>
-              <h4 className={styles.overview_price}>{overview.price || overview.count}</h4>
+              <h4 className={styles.overview_price}>
+                {overview.price || overview.count}
+              </h4>
             </div>
           </Grid>
         ))}
