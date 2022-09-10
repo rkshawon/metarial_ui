@@ -1,0 +1,13 @@
+.arrow_box {
+  color: #8d40ff;
+  height: 25px;
+  width: 45px;
+  text-align: center;
+}
+.apexcharts-svg {
+  border-bottom-right-radius: 16px !important;
+  border-bottom-left-radius: 16px !important;
+}
+.apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center {
+  display: none !important;
+}
