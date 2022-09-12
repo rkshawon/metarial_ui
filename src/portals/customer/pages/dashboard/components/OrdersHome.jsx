@@ -12,7 +12,6 @@ export default function OrdersHome() {
         backgroundColor: "rgb(243, 234, 254)",
         borderRadius: "16px",
         padding: "10px 40px",
-        maxHeight: "280px",
       }}
     >
       <div>

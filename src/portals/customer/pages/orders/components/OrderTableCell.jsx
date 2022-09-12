@@ -200,7 +200,7 @@ export default function OrderTableCell() {
   };
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ marginTop: "20px" }}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>

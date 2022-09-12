@@ -38,22 +38,22 @@
 .content {
   text-align: center;
 }
-.product_card {
-  /* box-shadow: 0px 0px 2px rgba(145, 158, 171, 0.2),
+/* .product_card {
+  box-shadow: 0px 0px 2px rgba(145, 158, 171, 0.2),
     0px 12px 24px -4px rgba(145, 158, 171, 0.12);
   border-radius: 16px;
   padding-bottom: 10px;
   margin-top: 40px;
   display: flex;
-  flex-wrap: wrap; */
-}
+  flex-wrap: wrap;
+} */
 .bulk_product_pagination {
   display: flex;
   justify-content: center;
   margin-top: 2em;
 }
 .statistics_heading_box {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 .overview_title,
 .statistics_title,
@@ -68,7 +68,7 @@
   font-weight: 500;
 }
 .overview_heading_box {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 .overview_price {
   font-size: 24px;

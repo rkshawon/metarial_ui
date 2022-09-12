@@ -1,40 +1,32 @@
 import { Grid, InputLabel, MenuItem, Select } from "@mui/material";
 import React from "react";
 import InputField from "../../../../../Authentication/components/InputField";
-import styles from "../../../styles/customerStyles.module.css";
 
-export default function CompleteProfile() {
+export default function AddressInfo() {
   return (
     <div>
-      <h2 className={styles.welcome_popup}>Complete your profile</h2>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <h3 style={{ marginRight: 10 }}>Lets introduce yourself</h3>
-      </div>
+      <h6>
+        Fill up the following information to complete the shipping process
+      </h6>
       <Grid container spacing={4}>
         <Grid item sm={6}>
           <InputLabel sx={{ margin: 0, textAlign: "left", color: "#000" }}>
-            What is your full name?
+            Name
           </InputLabel>
           <InputField
             //   label="Login E-mail or Phone"
-            placeholder="type your full name"
+            placeholder="enter your name"
             type="text"
             size="small"
           />
         </Grid>
         <Grid item sm={6}>
           <InputLabel sx={{ margin: 0, textAlign: "left", color: "#000" }}>
-            What did you come across to U - SEND?
+          Company Name
           </InputLabel>
           <InputField
             //   label="Login E-mail or Phone"
-            placeholder="type your answer"
+            placeholder="enter company name"
             type="text"
             size="small"
           />
@@ -43,19 +35,18 @@ export default function CompleteProfile() {
       <Grid container spacing={4}>
         <Grid item sm={6}>
           <InputLabel sx={{ margin: 0, textAlign: "left", color: "#000" }}>
-            What language do you speak?
+          Country
           </InputLabel>
           <Select
             labelId="demo-select-small"
             id="demo-select-small"
-            displayEmpty
             sx={{
               margin: "10px 0",
               width: "100%",
               height: "38px",
             }}
             // value={age}
-            label="Age"
+            label="select your shipping country"
             // onChange={handleChange}
           >
             <MenuItem value="">
@@ -68,61 +59,35 @@ export default function CompleteProfile() {
         </Grid>
         <Grid item sm={6}>
           <InputLabel sx={{ margin: 0, textAlign: "left", color: "#000" }}>
-            How are you selling?
-          </InputLabel>
-          <Select
-            labelId="demo-select-small"
-            id="demo-select-small"
-            sx={{
-              margin: "10px 0",
-              width: "100%",
-              height: "38px",
-            }}
-            // value={age}
-            label="Age"
-            // onChange={handleChange}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </Grid>
-      </Grid>
-      <Grid container spacing={4}>
-        <Grid item sm={6}>
-          <InputLabel sx={{ margin: 0, textAlign: "left", color: "#000" }}>
-            What is your average daily order volume?
-          </InputLabel>
-          <Select
-            labelId="demo-select-small"
-            id="demo-select-small"
-            sx={{
-              margin: "10px 0",
-              width: "100%",
-              height: "38px",
-            }}
-            // value={age}
-            label="Age"
-            // onChange={handleChange}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </Grid>
-        <Grid item sm={6}>
-          <InputLabel sx={{ margin: 0, textAlign: "left", color: "#000" }}>
-            What are you planning to use U - SEND for?
+          City
           </InputLabel>
           <InputField
             //   label="Login E-mail or Phone"
-            placeholder="enter your answer"
+            placeholder="enter city name"
+            type="text"
+            size="small"
+          />
+        </Grid>
+      </Grid>
+      <Grid container spacing={4}>
+      <Grid item sm={6}>
+          <InputLabel sx={{ margin: 0, textAlign: "left", color: "#000" }}>
+          Address/ Street
+          </InputLabel>
+          <InputField
+            //   label="Login E-mail or Phone"
+            placeholder="enter street address"
+            type="text"
+            size="small"
+          />
+        </Grid>
+        <Grid item sm={6}>
+          <InputLabel sx={{ margin: 0, textAlign: "left", color: "#000" }}>
+          Postal Code
+          </InputLabel>
+          <InputField
+            //   label="Login E-mail or Phone"
+            placeholder="enter company name"
             type="text"
             size="small"
           />

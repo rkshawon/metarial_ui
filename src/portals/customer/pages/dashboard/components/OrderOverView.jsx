@@ -22,7 +22,7 @@ export default function OrderOverView() {
     >
       <div className="flexbox">
         <h2 style={{ fontSize: "22px", color: "#2E2F39", fontWeight: "600" }}>
-          OverView
+          Overview
         </h2>
         <div style={{ fontSize: "14px", color: "#2E2F39" }}>
           <div>

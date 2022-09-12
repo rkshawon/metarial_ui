@@ -1,38 +1,26 @@
 import * as React from "react";
+
+import { ArrowBack, ArrowForward, Edit } from "@mui/icons-material";
+import LaunchIcon from "@mui/icons-material/Launch";
 import {
   Chip,
-  Collapse,
-  Grid,
-  IconButton,
-  InputAdornment,
   Pagination,
   PaginationItem,
   Paper,
+  Stack,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  TextField,
 } from "@mui/material";
-import { ArrowBack, ArrowForward, Search } from "@mui/icons-material";
-import { chipColorDecisionMaker } from "../../../utils/chipColorDecisionMaker";
-import ModifiedMenu from "../../orders/components/ModifiedMenu";
-import OrderTrackingDataTable from "../../orders/order_tracking/components/OrderTrackingDataTable";
 import { getChipProps } from "../../../utils/getChipProps";
-import { getDisputeFulfilmentDesign } from "../../../utils/getDIsputeFulfilmentDesign";
+import { extra_storageDataRows } from "../dummyData";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Stack } from "@mui/system";
-import { paymentDataRows } from "../dummyData";
-import styles from "../../../styles/customerStyles.module.css";
-import LaunchIcon from "@mui/icons-material/Launch";
 
 function Row(props) {
   const { row } = props;
-  const [open, setOpen] = React.useState(false);
-  const shouldBold = open && { fontWeight: "bold" };
 
   return (
     <React.Fragment>
@@ -40,9 +28,30 @@ function Row(props) {
         {/* <TableCell>
           <KeyboardArrowDownIcon />
         </TableCell> */}
-        <TableCell sx={shouldBold}>{row.date}</TableCell>
-        <TableCell sx={shouldBold}>{row.payment_method}</TableCell>
-        <TableCell sx={shouldBold}>{row.amount}</TableCell>
+        <TableCell>{row.id}</TableCell>
+        <TableCell>
+          <div
+            style={{
+              display: "flex",
+              alignItem: "center",
+            }}
+          >
+            <img
+              style={{ height: "40px", width: "40px", marginRight: "10px" }}
+              src={row.product.img}
+              alt=""
+            />
+            <p
+              style={{
+                marginTop: "5px",
+              }}
+            >
+              {row.product.title}
+            </p>
+          </div>
+        </TableCell>
+        <TableCell>{row.product_id}</TableCell>
+        <TableCell>{row.stock}</TableCell>
         <TableCell>
           <Chip
             variant="outlined"
@@ -56,64 +65,58 @@ function Row(props) {
               style={{
                 color: "#D9D9D9",
                 cursor: "pointer",
+                marginRight: "10px",
               }}
             />
+            <Edit style={{ color: "#D9D9D9", cursor: "pointer" }} />
           </div>
         </TableCell>
       </TableRow>
     </React.Fragment>
   );
 }
-export default function PaymentDataTable() {
-  const [open, setOpen] = React.useState(false);
 
+export default function StorageDataTable() {
   const tableHeadStyles = {
     color: "#707070",
     fontWeight: 500,
   };
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const openMenu = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
   return (
-    <TableContainer component={Paper} sx={{ marginTop: "20px" }}>
+    <TableContainer component={Paper} sx={{ marginTop: "30px" }}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
             {/* <TableCell>
-              <IconButton
-                aria-label="expand row"
-                size="small"
-                onClick={() => setOpen(!open)}
-              >
-                {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-              </IconButton>
+              <KeyboardArrowDownIcon />
             </TableCell> */}
-            <TableCell sx={{ color: "#707070", fontWeight: 500 }}>
-              Date
+            <TableCell sx={{ color: "#707070", fontWeight: 500 }}>ID</TableCell>
+            <TableCell
+              sx={{
+                color: "#707070",
+                fontWeight: 500,
+                width: "250px",
+              }}
+            >
+              Product
             </TableCell>
             <TableCell align="left" sx={tableHeadStyles}>
-              Payment Method
+              Product ID
             </TableCell>
             <TableCell align="left" sx={tableHeadStyles}>
-              Amount
+              Stock
             </TableCell>
+
             <TableCell align="left" sx={tableHeadStyles}>
               Status
             </TableCell>
             <TableCell align="left" sx={tableHeadStyles}>
               Action
             </TableCell>
-            <TableCell align="left" sx={tableHeadStyles}></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {paymentDataRows.map((row) => (
+          {extra_storageDataRows.map((row) => (
             <Row key={row.id} row={row} />
           ))}
         </TableBody>
