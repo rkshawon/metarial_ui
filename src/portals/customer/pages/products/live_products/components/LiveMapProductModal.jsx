@@ -15,7 +15,7 @@ import styles from "../../../../styles/customerStyles.module.css";
 import img from "../../../../assets/3.png";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SearchIcon from "@mui/icons-material/Search";
-import MapProductAutoComplete from "./MapProductAutoComplete";
+import MapProductAutoComplete from "../../product_details/components/MapProductAutoComplete";
 
 const products = [
   { title: "Product 1" },
@@ -97,7 +97,7 @@ const style = {
   padding: "20px 30px",
 };
 
-export default function ImportProductModal() {
+export default function LiveMapProductModal() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -128,27 +128,6 @@ export default function ImportProductModal() {
             <div style={{ margin: "40px 40px 20px 40px" }}>
               <Grid container spacing={2} sx={{ textAlign: "left" }}>
                 <Grid item xs={6.8}>
-                  <h4 style={{ fontSize: "20px" }}>Supplier Product</h4>
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <img
-                      src={img}
-                      alt=""
-                      style={{
-                        height: "35px",
-                        width: "35px",
-                        marginRight: "20px",
-                        borderRadius: "8px",
-                      }}
-                    />
-                    <div>
-                      <h6 style={{ marginBottom: 10 }}>
-                        Foundations Matte Flip Flop
-                      </h6>
-                      <h5>$23.89</h5>
-                    </div>
-                  </div>
-                </Grid>
-                <Grid item xs={5.2}>
                   <h4 style={{ fontSize: "20px", marginBottom: "10px" }}>
                     Shopify Product
                   </h4>
@@ -174,6 +153,27 @@ export default function ImportProductModal() {
                     </div>
                   </div>
                 </Grid>
+                <Grid item xs={5.2}>
+                  <h4 style={{ fontSize: "20px" }}>Supplier Product</h4>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <img
+                      src={img}
+                      alt=""
+                      style={{
+                        height: "35px",
+                        width: "35px",
+                        marginRight: "20px",
+                        borderRadius: "8px",
+                      }}
+                    />
+                    <div>
+                      <h6 style={{ marginBottom: 10 }}>
+                        Foundations Matte Flip Flop
+                      </h6>
+                      <h5>$23.89</h5>
+                    </div>
+                  </div>
+                </Grid>
               </Grid>
             </div>
             <Divider />
@@ -193,36 +193,6 @@ export default function ImportProductModal() {
                         marginTop: "5px",
                       }}
                     >
-                      <div
-                        key={index}
-                        style={{
-                          padding: "5px",
-                          width: "40%",
-                          display: "flex",
-                          justifyContent: "space-evenly",
-                          alignItems: "center",
-                          backgroundColor: "#f0f0f0",
-                          borderRadius: "10px",
-                          height: "58px",
-                        }}
-                      >
-                        {/* <span>{p.img}</span> */}
-                        <img
-                          src={p.img}
-                          alt=""
-                          style={{
-                            height: "35px",
-                            width: "35px",
-                            borderRadius: "8px",
-                          }}
-                        />
-                        <span style={{ color: "#0faba8", fontWeight: "600" }}>
-                          {p.color}
-                        </span>
-                        <h6>{p.id}</h6>
-                      </div>
-
-                      <ArrowForwardIcon sx={{ color: "#9d9d9d" }} />
                       <div
                         style={{
                           padding: "10px 20px",
@@ -260,27 +230,35 @@ export default function ImportProductModal() {
                             />
                           )}
                         />
-                        {/* <Autocomplete
-                          size="small"
-                          freeSolo
-                          id="free-solo-2-demo"
-                          options={top100Films.map((option) => option.title)}
-                          renderInput={(params) => (
-                            <TextField
-                              {...params}
-                              placeholder="Search for your existing store product variants"
-                              InputProps={{
-                                ...params.InputProps,
-                                type: "search",
-                                startAdornment: (
-                                  <InputAdornment position="start">
-                                    <SearchIcon />
-                                  </InputAdornment>
-                                ),
-                              }}
-                            />
-                          )}
-                        /> */}
+                      </div>
+                      <ArrowForwardIcon sx={{ color: "#9d9d9d" }} />
+                      <div
+                        key={index}
+                        style={{
+                          padding: "5px",
+                          width: "40%",
+                          display: "flex",
+                          justifyContent: "space-evenly",
+                          alignItems: "center",
+                          backgroundColor: "#f0f0f0",
+                          borderRadius: "10px",
+                          height: "58px",
+                        }}
+                      >
+                        {/* <span>{p.img}</span> */}
+                        <img
+                          src={p.img}
+                          alt=""
+                          style={{
+                            height: "35px",
+                            width: "35px",
+                            borderRadius: "8px",
+                          }}
+                        />
+                        <span style={{ color: "#0faba8", fontWeight: "600" }}>
+                          {p.color}
+                        </span>
+                        <h6>{p.id}</h6>
                       </div>
                     </div>
                   );
@@ -288,17 +266,6 @@ export default function ImportProductModal() {
               </div>
               <div></div>
             </div>
-            {/* topbar  */}
-            {/* 
-            <Button
-              variant="lightblue"
-              sx={{
-                width: "auto",
-                borderRadius: "5px",
-              }}
-            >
-              Map
-            </Button> */}
           </Box>
         </Fade>
       </Modal>

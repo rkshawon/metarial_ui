@@ -45,7 +45,7 @@ export default function Welcome() {
                       fontWeight: "600",
                     }}
                   >
-                    Income
+                    Balance
                   </div>
                   <p
                     style={{
@@ -87,7 +87,7 @@ export default function Welcome() {
                 </div>
                 <div>
                   <Icon
-                    icon="bi:arrow-down-left-circle-fill"
+                    icon="ant-design:euro-circle-filled"
                     color="#8D40FF"
                     width="48"
                     height="48"

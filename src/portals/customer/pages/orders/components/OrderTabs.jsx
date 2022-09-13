@@ -102,6 +102,7 @@ export default function OrderTabs() {
               <div
                 style={{
                   display: "flex",
+                  fontWeight: value === 0 && "700",
                 }}
               >
                 {chipColorDecisionMaker("All")}
@@ -115,6 +116,7 @@ export default function OrderTabs() {
               <div
                 style={{
                   display: "flex",
+                  fontWeight: value === 1 && "700",
                 }}
               >
                 {chipColorDecisionMaker("Waiting")}
@@ -128,6 +130,7 @@ export default function OrderTabs() {
               <div
                 style={{
                   display: "flex",
+                  fontWeight: value === 2 && "700",
                 }}
               >
                 {chipColorDecisionMaker("Processing")}
@@ -141,6 +144,7 @@ export default function OrderTabs() {
               <div
                 style={{
                   display: "flex",
+                  fontWeight: value === 3 && "700",
                 }}
               >
                 {chipColorDecisionMaker("Shipped")}
@@ -154,6 +158,7 @@ export default function OrderTabs() {
               <div
                 style={{
                   display: "flex",
+                  fontWeight: value === 4 && "700",
                 }}
               >
                 {chipColorDecisionMaker("Failed")}

@@ -57,9 +57,6 @@ export default function Products() {
             }}
           />
           <div className={styles.muiSelectOption}>
-            {/* <InputLabel variant="standard" htmlFor="uncontrolled-native">
-      Sort By
-    </InputLabel> */}
             <FormControl fullWidth>
               <InputLabel id="sort-by" sx={{ color: "gray" }}>
                 Sort By

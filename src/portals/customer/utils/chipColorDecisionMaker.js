@@ -1,7 +1,7 @@
 import styles from "../styles/customerStyles.module.css";
 
 export const chipColorDecisionMaker = (type) => {
-  if (type === "All") {
+  if (type === "All" || type === "Variants") {
     return (
       <div
         style={{
@@ -40,7 +40,7 @@ export const chipColorDecisionMaker = (type) => {
       </div>
     );
   }
-  if (type === "Shipped") {
+  if (type === "Shipped" || type === "Images") {
     return (
       <div
         style={{

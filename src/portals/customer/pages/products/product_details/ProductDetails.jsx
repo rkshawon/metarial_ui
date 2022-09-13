@@ -4,7 +4,7 @@ import AppLayout from "../../../../../layout/DashboardLayout";
 import styles from "../../../styles/customerStyles.module.css";
 import ProductImageGallery from "./components/ProductImageGallery";
 import ProductInfo from "./components/ProductInfo";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import ProductDescription from "./components/ProductDescription";
 import ImportProductModal from "./components/ImportProductModal";
+import LiveMapProductModal from "../live_products/components/LiveMapProductModal";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -54,6 +55,8 @@ export default function ProductDetails() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const location = useLocation().pathname.split("/")[3]
+  console.log(location)
   return (
     <AppLayout>
       <div className={styles.products}>
@@ -85,7 +88,7 @@ export default function ProductDetails() {
             >
               Add to Import List
             </Button>
-            <ImportProductModal />
+           {location !== "live-products" ? <ImportProductModal />: <LiveMapProductModal />}
           </Grid>
         </Grid>
         {/* Product statistics */}

@@ -61,7 +61,7 @@ export default function DisputeTabs() {
 
   return (
     <Box sx={{ width: "100%", marginTop: "30px" }}>
-      <Box sx={{}}>
+      <Box>
         <Tabs
           value={value}
           sx={{ position: "relative", zIndex: 1 }}
@@ -75,7 +75,7 @@ export default function DisputeTabs() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  backgroundColor: value === 0 && "white",
+                  fontWeight: value === 0 && "700",
                   borderRadius: "5px",
                   padding: "3px",
                 }}
@@ -92,7 +92,7 @@ export default function DisputeTabs() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  backgroundColor: value === 1 && "white",
+                  fontWeight: value === 1 && "700",
                   borderRadius: "5px",
                   padding: "3px",
                 }}
@@ -109,7 +109,7 @@ export default function DisputeTabs() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  backgroundColor: value === 2 && "white",
+                  fontWeight: value === 2 && "700",
                   borderRadius: "5px",
                   padding: "3px",
                 }}

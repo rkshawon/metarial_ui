@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import UploadImage from "./UploadImage";
 import CustomMultipleSelect from "./CustomMultipleSelect";
+import { customSvg } from "../../../../../utils/customSvg";
 
 const style = {
   position: "absolute",
@@ -36,6 +37,7 @@ export default function SourcingRequestModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [color, setColor] = React.useState(0);
 
   const [age, setAge] = React.useState("");
 
@@ -141,27 +143,14 @@ export default function SourcingRequestModal() {
                 <InputLabel
                   sx={{ margin: 0, textAlign: "left", color: "#000" }}
                 >
-                  Are you selling in bundles?
+                  Enter your target price
                 </InputLabel>
-                <Select
-                  labelId="demo-select-small"
-                  id="demo-select-small"
-                  sx={{
-                    margin: "10px 0",
-                    width: "100%",
-                    height: "46px",
-                  }}
-                  value={age}
-                  label="Age"
-                  onChange={handleChange}
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
-                </Select>
+                <InputField
+                  //   label="Login E-mail or Phone"
+                  placeholder="Target Price"
+                  type="text"
+                  size="small"
+                />
               </Grid>
               <Grid item sm={6}>
                 <InputLabel

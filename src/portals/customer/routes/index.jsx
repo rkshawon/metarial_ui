@@ -31,6 +31,7 @@ export default function CustomerRoutes() {
         <Route path="products/bundle" element={<ProductBundle />} />
         <Route path="products/:id" element={<ProductDetails />} />
         <Route path="products/live-products" element={<LiveProducts />} />
+        <Route path="products/live-products/:id" element={<ProductDetails />} />
         <Route path="products/import-list" element={<ImportList />} />
         <Route
           path="products/import-list/product/:id"

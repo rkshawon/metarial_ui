@@ -67,7 +67,7 @@ export default function DisputeTabs() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  backgroundColor: value === 0 && "white",
+                  fontWeight: value === 0 && "700",
                   borderRadius: "5px",
                   padding: "3px",
                 }}
@@ -84,7 +84,7 @@ export default function DisputeTabs() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  backgroundColor: value === 1 && "white",
+                  fontWeight: value === 1 && "700",
                   borderRadius: "5px",
                   padding: "3px",
                 }}
@@ -101,7 +101,7 @@ export default function DisputeTabs() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  backgroundColor: value === 2 && "white",
+                  fontWeight: value === 2 && "700",
                   borderRadius: "5px",
                   padding: "3px",
                 }}
@@ -118,7 +118,7 @@ export default function DisputeTabs() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  backgroundColor: value === 3 && "white",
+                  fontWeight: value === 3 && "700",
                   borderRadius: "5px",
                   padding: "3px",
                 }}
@@ -135,7 +135,7 @@ export default function DisputeTabs() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  backgroundColor: value === 4 && "white",
+                  fontWeight: value === 4 && "700",
                   borderRadius: "5px",
                   padding: "3px",
                 }}

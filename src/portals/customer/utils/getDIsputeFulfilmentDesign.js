@@ -7,7 +7,7 @@ export const getDisputeFulfilmentDesign = (value) => {
         style={{
           background: "#D4FFD3",
           color: "#05AE01",
-          width: "100%",
+          width: "60%",
         }}
         className={styles.fulfillment}
       >
@@ -21,7 +21,7 @@ export const getDisputeFulfilmentDesign = (value) => {
         style={{
           background: "#E9DAFF",
           color: "#8D40FF",
-          width: "100%",
+          width: "60%",
         }}
         className={styles.fulfillment}
       >
@@ -35,7 +35,7 @@ export const getDisputeFulfilmentDesign = (value) => {
         style={{
           background: "#FEFFCF",
           color: "#E0A816",
-          width: "100%",
+          width: "60%",
         }}
         className={styles.fulfillment}
       >
@@ -49,7 +49,7 @@ export const getDisputeFulfilmentDesign = (value) => {
         style={{
           background: "#DDF1FF",
           color: "#3366FF",
-          width: "100%",
+          width: "60%",
         }}
         className={styles.fulfillment}
       >
@@ -62,7 +62,7 @@ export const getDisputeFulfilmentDesign = (value) => {
         style={{
           background: "#F4F4F4",
           color: "#939393",
-          width: "100%",
+          width: "60%",
         }}
         className={styles.fulfillment}
       >

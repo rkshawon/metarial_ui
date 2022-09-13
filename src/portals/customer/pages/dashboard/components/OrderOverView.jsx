@@ -4,6 +4,7 @@ import ModifiedMenuItem from "../../../../../layout/sidebar/ModifiedMenuItem";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function OrderOverView() {
+  const [dataValue, setDataValue] = useState("Last 7 days");
   const [anchorEl, setAnchorEl] = useState(null);
   const openMenu = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -12,6 +13,11 @@ export default function OrderOverView() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const changeDataValue = (value) => {
+    setDataValue(value);
+  };
+
   return (
     <div
       style={{
@@ -38,8 +44,9 @@ export default function OrderOverView() {
                   fontWeight: "600",
                 }}
               >
-                Last 7 days
+                {dataValue}
               </span>
+
               <ExpandMoreIcon />
             </div>
             <Menu
@@ -51,11 +58,31 @@ export default function OrderOverView() {
                 "aria-labelledby": "basic-button",
               }}
             >
-              <ModifiedMenuItem close={handleClose} itemName="Today" />
-              <ModifiedMenuItem close={handleClose} itemName="Last 7 days" />
-              <ModifiedMenuItem close={handleClose} itemName="Last 14 days" />
-              <ModifiedMenuItem close={handleClose} itemName="Last 30 days" />
-              <ModifiedMenuItem close={handleClose} itemName="Last year" />
+              <ModifiedMenuItem
+                close={handleClose}
+                changeDataValue={changeDataValue}
+                itemName="Today"
+              />
+              <ModifiedMenuItem
+                close={handleClose}
+                changeDataValue={changeDataValue}
+                itemName="Last 7 days"
+              />
+              <ModifiedMenuItem
+                close={handleClose}
+                changeDataValue={changeDataValue}
+                itemName="Last 14 days"
+              />
+              <ModifiedMenuItem
+                close={handleClose}
+                changeDataValue={changeDataValue}
+                itemName="Last 30 days"
+              />
+              <ModifiedMenuItem
+                close={handleClose}
+                changeDataValue={changeDataValue}
+                itemName="Last year"
+              />
             </Menu>
           </div>
         </div>
