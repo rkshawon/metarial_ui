@@ -121,7 +121,7 @@ export default function StorageDataTable() {
           ))}
         </TableBody>
       </Table>
-      <div
+      {/* <div
         style={{
           position: "absolute",
           background: "#fff",
@@ -150,7 +150,7 @@ export default function StorageDataTable() {
             )}
           />
         </Stack>
-      </div>
+      </div> */}
     </TableContainer>
   );
 }

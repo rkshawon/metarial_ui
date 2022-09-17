@@ -23,6 +23,7 @@ import { Link } from "react-router-dom";
 import { Stack } from "@mui/system";
 import { customSvg } from "../../../../../utils/customSvg";
 import "../style.product.css";
+import LiveMapProductModal from "./components/LiveMapProductModal";
 
 export default function LiveProducts() {
   const [color, setColor] = React.useState(0);
@@ -90,87 +91,81 @@ export default function LiveProducts() {
           {product_cards.map((product) => (
             <Grid key={product.id} item lg={3} md={4} sm={4} xs={12}>
               <div className="product_card">
-                <Link to={`${product.id}`}>
-                  <img
-                    src={product.img}
-                    alt="product"
-                    style={{ width: "100%", height: "100%" }}
-                  />
+                <img
+                  src={product.img}
+                  alt="product"
+                  style={{ width: "100%", height: "100%" }}
+                />
+                <div
+                  style={{
+                    padding: "20px 30px",
+                    width: "100%",
+                    position: "relative",
+                  }}
+                >
+                  <h5
+                    style={{
+                      fontSize: "14px",
+                      color: "#212B36",
+                      textOverflow: "ellipsis",
+                      overflow: "hidden",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {product.title}
+                  </h5>
                   <div
                     style={{
-                      padding: "20px 30px",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
                       width: "100%",
+                      height: "50px",
                       position: "relative",
                     }}
                   >
-                    <h5
-                      style={{
-                        fontSize: "14px",
-                        color: "#212B36",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {product.title}
-                    </h5>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        width: "100%",
-                        height: "50px",
-                        position: "relative",
-                      }}
-                    >
-                      <div className="impBtn">
-                        <Button
+                    <div className="impBtn">
+                      {/* <Button
                           variant="deepbluemini"
-                          // sx={{
-                          //   position: "absolute",
-                          //   bottom: "-100%",
-                          //   opacity: 0,
-                          // }}
                         >
                           Map
-                        </Button>
-                      </div>
+                        </Button> */}
+                      <LiveMapProductModal />
+                    </div>
 
-                      <div style={{ position: "absolute", right: "0px" }}>
-                        <small
-                          style={{
-                            fontSize: "16px",
-                            color: "919EAB",
-                            textDecorationLine: "line-through",
-                            fontWeight: "700px",
-                            lineHeight: 1.5,
-                            marginTop: "10px",
-                            marginRight: "5px",
-                          }}
-                        >
-                          {product.cut_price}
-                        </small>
-                        <small
-                          style={{
-                            fontSize: "16px",
-                            color: "#212B36",
-                            fontWeight: "600px",
-                            lineHeight: 1.5,
-                            marginTop: "10px",
-                          }}
-                        >
-                          {product.price}
-                        </small>
-                      </div>
+                    <div style={{ position: "absolute", right: "0px" }}>
+                      <small
+                        style={{
+                          fontSize: "16px",
+                          color: "919EAB",
+                          textDecorationLine: "line-through",
+                          fontWeight: "700px",
+                          lineHeight: 1.5,
+                          marginTop: "10px",
+                          marginRight: "5px",
+                        }}
+                      >
+                        {product.cut_price}
+                      </small>
+                      <small
+                        style={{
+                          fontSize: "16px",
+                          color: "#212B36",
+                          fontWeight: "600px",
+                          lineHeight: 1.5,
+                          marginTop: "10px",
+                        }}
+                      >
+                        {product.price}
+                      </small>
                     </div>
                   </div>
-                </Link>
+                </div>
               </div>
             </Grid>
           ))}
         </Grid>
-
+        {/* 
         <div
           style={{
             position: "absolute",
@@ -182,6 +177,46 @@ export default function LiveProducts() {
           }}
         >
           <Stack spacing={2}>
+            <Pagination
+              count={10}
+              sx={{
+                "&.MuiPaginationItem-root": {
+                  color: "blue",
+                },
+              }}
+              renderItem={(item) => (
+                <PaginationItem
+                  components={{
+                    previous: ArrowBackIcon,
+                    next: ArrowForwardIcon,
+                  }}
+                  {...item}
+                />
+              )}
+            />
+          </Stack>
+        </div> */}
+        <div
+          style={{
+            bottom: 10,
+            left: "45%",
+            padding: "5px 0",
+            borderRadius: "8px",
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "40px",
+          }}
+        >
+          <Stack
+            spacing={2}
+            sx={{
+              backgroundColor: "#fff",
+              boxShadow:
+                "rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px",
+              padding: "8px 15px",
+              borderRadius: "5px",
+            }}
+          >
             <Pagination
               count={10}
               sx={{

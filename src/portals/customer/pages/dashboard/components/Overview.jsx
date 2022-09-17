@@ -3,13 +3,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { overview_cards } from "../../../../../dummyData";
 import styles from "../../../styles/customerStyles.module.css";
+import TimingDropdown from "./TimingDropdown";
 
 export default function Overview() {
   return (
     <div>
       <div className={styles.overview_heading_box}>
-        <h4 className={styles.overview_title}>Overview</h4>
-        <small>Today</small>
+        <div className="flexbox">
+          <div>
+            <h4 className={styles.overview_title}>Overview</h4>
+            <small>Today</small>
+          </div>
+          <TimingDropdown />
+        </div>
       </div>
       <Grid container spacing={4}>
         {overview_cards.map((overview) => (

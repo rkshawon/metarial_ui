@@ -27,9 +27,15 @@ import {
 } from "@mui/material";
 import { rows } from "../dummyData";
 import { getChipProps } from "../../../utils/getChipProps";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import {
+  ArrowBack,
+  ArrowDownward,
+  ArrowForward,
+  ArrowUpward,
+} from "@mui/icons-material";
 import OrderExpandContent from "./OrderExpandContent";
 import InfoIcon from "@mui/icons-material/Info";
+import { useState } from "react";
 
 function Row(props) {
   const { row } = props;
@@ -44,7 +50,7 @@ function Row(props) {
           style={{
             background: "#D4FFD3",
             color: "#05AE01",
-            width: "100%",
+            width: "50%",
           }}
           className={styles.fulfillment}
         >
@@ -58,7 +64,7 @@ function Row(props) {
           style={{
             background: "#E9DAFF",
             color: "#8D40FF",
-            width: "100%",
+            width: "50%",
           }}
           className={styles.fulfillment}
         >
@@ -71,7 +77,7 @@ function Row(props) {
           style={{
             background: "#FEFFCF",
             color: "#E0A816",
-            width: "100%",
+            width: "50%",
           }}
           className={styles.fulfillment}
         >
@@ -157,7 +163,7 @@ function Row(props) {
           </TableCell>
         </TableRow>
       </>
-      <div
+      {/* <div
         style={{
           position: "absolute",
           background: "#fff",
@@ -186,17 +192,39 @@ function Row(props) {
             )}
           />
         </Stack>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 }
 
 export default function OrderTableCell() {
   const [open, setOpen] = React.useState(false);
+  const [orderBy, setOrderBy] = useState("ASC");
+  const [sortedData, setSortedData] = useState(rows);
+  const [colName, setColName] = useState("");
 
+  // sorting function for each table column
+  const sorting = (col) => {
+    setColName(col);
+    if (orderBy === "ASC") {
+      const sorted = [...rows].sort((a, b) =>
+        a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
+      );
+      setSortedData(sorted);
+      setOrderBy("DSC");
+    }
+    if (orderBy === "DSC") {
+      const sorted = [...rows].sort((a, b) =>
+        a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
+      );
+      setSortedData(sorted);
+      setOrderBy("ASC");
+    }
+  };
   const tableHeadStyles = {
     color: "#707070",
     fontWeight: 500,
+    cursor: "pointer",
   };
 
   return (
@@ -205,39 +233,142 @@ export default function OrderTableCell() {
         <TableHead>
           <TableRow>
             <TableCell>
-              <IconButton
+              {/* <IconButton
                 aria-label="expand row"
                 size="small"
                 onClick={() => setOpen(!open)}
               >
                 {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-              </IconButton>
+              </IconButton> */}
             </TableCell>
-            <TableCell sx={{ color: "#707070", fontWeight: 500 }}>
-              Order ID
+            <TableCell sx={tableHeadStyles} onClick={() => sorting("orderId")}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                {colName === "orderId" ? <strong>Order ID</strong> : "Order ID"}
+                {colName === "orderId" && orderBy === "ASC" ? (
+                  <ArrowDownward
+                    sx={{ fontSize: "16px", marginLeft: "10px" }}
+                  />
+                ) : (
+                  <ArrowUpward sx={{ fontSize: "16px", marginLeft: "10px" }} />
+                )}
+              </div>
             </TableCell>
-            <TableCell align="left" sx={tableHeadStyles}>
-              Date
+            <TableCell
+              align="left"
+              sx={tableHeadStyles}
+              onClick={() => sorting("date")}
+            >
+              <div style={{ display: "flex", alignItems: "center" }}>
+                {colName === "date" ? <strong>Date</strong> : "Date"}
+                {colName === "date" && orderBy === "ASC" ? (
+                  <ArrowDownward
+                    sx={{ fontSize: "16px", marginLeft: "10px" }}
+                  />
+                ) : (
+                  <ArrowUpward sx={{ fontSize: "16px", marginLeft: "10px" }} />
+                )}
+              </div>
             </TableCell>
-            <TableCell align="left" sx={tableHeadStyles}>
-              Customer
+            <TableCell
+              align="left"
+              sx={tableHeadStyles}
+              onClick={() => sorting("customer")}
+            >
+              <div style={{ display: "flex", alignItems: "center" }}>
+                {colName === "customer" ? (
+                  <strong>Customer</strong>
+                ) : (
+                  "Customer"
+                )}
+                {colName === "customer" && orderBy === "ASC" ? (
+                  <ArrowDownward
+                    sx={{ fontSize: "16px", marginLeft: "10px" }}
+                  />
+                ) : (
+                  <ArrowUpward sx={{ fontSize: "16px", marginLeft: "10px" }} />
+                )}
+              </div>
             </TableCell>
-            <TableCell align="left" sx={tableHeadStyles}>
-              Cost
+            <TableCell
+              align="left"
+              sx={tableHeadStyles}
+              onClick={() => sorting("cost")}
+            >
+              <div style={{ display: "flex", alignItems: "center" }}>
+                {colName === "cost" ? <strong>Cost</strong> : "Cost"}
+                {colName === "cost" && orderBy === "ASC" ? (
+                  <ArrowDownward
+                    sx={{ fontSize: "16px", marginLeft: "10px" }}
+                  />
+                ) : (
+                  <ArrowUpward sx={{ fontSize: "16px", marginLeft: "10px" }} />
+                )}
+              </div>
             </TableCell>
-            <TableCell align="left" sx={tableHeadStyles}>
-              Shipping
+            <TableCell
+              align="left"
+              sx={tableHeadStyles}
+              onClick={() => sorting("shipping")}
+            >
+              <div style={{ display: "flex", alignItems: "center" }}>
+                {colName === "shipping" ? (
+                  <strong>Shipping</strong>
+                ) : (
+                  "Shipping"
+                )}
+                {colName === "shipping" && orderBy === "ASC" ? (
+                  <ArrowDownward
+                    sx={{ fontSize: "16px", marginLeft: "10px" }}
+                  />
+                ) : (
+                  <ArrowUpward sx={{ fontSize: "16px", marginLeft: "10px" }} />
+                )}
+              </div>
             </TableCell>
-            <TableCell align="left" sx={tableHeadStyles}>
-              Fulfilment
+            <TableCell
+              align="left"
+              sx={tableHeadStyles}
+              onClick={() => sorting("fulfillment")}
+            >
+              <div style={{ display: "flex", alignItems: "center" }}>
+                {colName === "fulfillment" ? (
+                  <strong>Fulfillment</strong>
+                ) : (
+                  "Fulfillment"
+                )}
+                {colName === "fulfillment" && orderBy === "ASC" ? (
+                  <ArrowDownward
+                    sx={{ fontSize: "16px", marginLeft: "10px" }}
+                  />
+                ) : (
+                  <ArrowUpward sx={{ fontSize: "16px", marginLeft: "10px" }} />
+                )}
+              </div>
             </TableCell>
-            <TableCell align="left" sx={tableHeadStyles}>
-              Order Status
+            <TableCell
+              align="left"
+              sx={tableHeadStyles}
+              onClick={() => sorting("order_status")}
+            >
+              <div style={{ display: "flex", alignItems: "center" }}>
+                {colName === "order_status" ? (
+                  <strong>Order Status</strong>
+                ) : (
+                  "Order Status"
+                )}
+                {colName === "order_status" && orderBy === "ASC" ? (
+                  <ArrowDownward
+                    sx={{ fontSize: "16px", marginLeft: "10px" }}
+                  />
+                ) : (
+                  <ArrowUpward sx={{ fontSize: "16px", marginLeft: "10px" }} />
+                )}
+              </div>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {sortedData.map((row) => (
             <Row key={row.id} row={row} />
           ))}
         </TableBody>

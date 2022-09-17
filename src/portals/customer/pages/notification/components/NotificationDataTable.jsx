@@ -338,36 +338,6 @@ export default function NotificationDataTable() {
           ))}
         </TableBody>
       </Table>
-      <div
-        style={{
-          position: "absolute",
-          background: "#fff",
-          bottom: 10,
-          left: "45%",
-          padding: "5px 0",
-          borderRadius: "8px",
-        }}
-      >
-        <Stack spacing={2}>
-          <Pagination
-            count={10}
-            sx={{
-              "&.MuiPaginationItem-root": {
-                color: "blue",
-              },
-            }}
-            renderItem={(item) => (
-              <PaginationItem
-                components={{
-                  previous: ArrowBack,
-                  next: ArrowForward,
-                }}
-                {...item}
-              />
-            )}
-          />
-        </Stack>
-      </div>
     </TableContainer>
   );
 }

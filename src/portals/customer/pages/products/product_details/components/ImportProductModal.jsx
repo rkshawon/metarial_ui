@@ -177,7 +177,7 @@ export default function ImportProductModal() {
               </Grid>
             </div>
             <Divider />
-            <div style={{ height: "300px", overflowY: "scroll" }}>
+            <div style={{ height: "350px", overflowY: "scroll" }}>
               <div
                 style={{
                   marginTop: "40px",
@@ -286,7 +286,11 @@ export default function ImportProductModal() {
                   );
                 })}
               </div>
-              <div></div>
+            </div>
+            <div style={{ textAlign: "right", marginRight: "40px" }}>
+              <Button variant="lightblue" sx={{ width: "auto" }}>
+                Save
+              </Button>
             </div>
             {/* topbar  */}
             {/* 

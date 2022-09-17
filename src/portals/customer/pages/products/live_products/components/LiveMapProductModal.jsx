@@ -104,12 +104,15 @@ export default function LiveMapProductModal() {
 
   return (
     <>
-      <Button
+      {/* <Button
         onClick={handleOpen}
         variant="purple_outlined"
         sx={{ width: "auto", borderRadius: "5px", marginLeft: "15px" }}
       >
         Map Product
+      </Button> */}
+      <Button onClick={handleOpen} variant="deepbluemini">
+        Map
       </Button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -127,7 +130,28 @@ export default function LiveMapProductModal() {
             <h2 className={styles.welcome_popup}>Map Product</h2>
             <div style={{ margin: "40px 40px 20px 40px" }}>
               <Grid container spacing={2} sx={{ textAlign: "left" }}>
-                <Grid item xs={6.8}>
+                <Grid item xs={6.7}>
+                  <h4 style={{ fontSize: "20px" }}>Supplier Product</h4>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <img
+                      src={img}
+                      alt=""
+                      style={{
+                        height: "35px",
+                        width: "35px",
+                        marginRight: "20px",
+                        borderRadius: "8px",
+                      }}
+                    />
+                    <div>
+                      <h6 style={{ marginBottom: 10 }}>
+                        Foundations Matte Flip Flop
+                      </h6>
+                      <h5>$23.89</h5>
+                    </div>
+                  </div>
+                </Grid>
+                <Grid item xs={5.3}>
                   <h4 style={{ fontSize: "20px", marginBottom: "10px" }}>
                     Shopify Product
                   </h4>
@@ -153,31 +177,10 @@ export default function LiveMapProductModal() {
                     </div>
                   </div>
                 </Grid>
-                <Grid item xs={5.2}>
-                  <h4 style={{ fontSize: "20px" }}>Supplier Product</h4>
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <img
-                      src={img}
-                      alt=""
-                      style={{
-                        height: "35px",
-                        width: "35px",
-                        marginRight: "20px",
-                        borderRadius: "8px",
-                      }}
-                    />
-                    <div>
-                      <h6 style={{ marginBottom: 10 }}>
-                        Foundations Matte Flip Flop
-                      </h6>
-                      <h5>$23.89</h5>
-                    </div>
-                  </div>
-                </Grid>
               </Grid>
             </div>
             <Divider />
-            <div style={{ height: "300px", overflowY: "scroll" }}>
+            <div style={{ height: "350px", overflowY: "scroll" }}>
               <div
                 style={{
                   marginTop: "40px",
@@ -193,6 +196,35 @@ export default function LiveMapProductModal() {
                         marginTop: "5px",
                       }}
                     >
+                      <div
+                        key={index}
+                        style={{
+                          padding: "5px",
+                          width: "40%",
+                          display: "flex",
+                          justifyContent: "space-evenly",
+                          alignItems: "center",
+                          backgroundColor: "#f0f0f0",
+                          borderRadius: "10px",
+                          height: "58px",
+                        }}
+                      >
+                        {/* <span>{p.img}</span> */}
+                        <img
+                          src={p.img}
+                          alt=""
+                          style={{
+                            height: "35px",
+                            width: "35px",
+                            borderRadius: "8px",
+                          }}
+                        />
+                        <span style={{ color: "#0faba8", fontWeight: "600" }}>
+                          {p.color}
+                        </span>
+                        <h6>{p.id}</h6>
+                      </div>
+                      <ArrowForwardIcon sx={{ color: "#9d9d9d" }} />
                       <div
                         style={{
                           padding: "10px 20px",
@@ -231,40 +263,15 @@ export default function LiveMapProductModal() {
                           )}
                         />
                       </div>
-                      <ArrowForwardIcon sx={{ color: "#9d9d9d" }} />
-                      <div
-                        key={index}
-                        style={{
-                          padding: "5px",
-                          width: "40%",
-                          display: "flex",
-                          justifyContent: "space-evenly",
-                          alignItems: "center",
-                          backgroundColor: "#f0f0f0",
-                          borderRadius: "10px",
-                          height: "58px",
-                        }}
-                      >
-                        {/* <span>{p.img}</span> */}
-                        <img
-                          src={p.img}
-                          alt=""
-                          style={{
-                            height: "35px",
-                            width: "35px",
-                            borderRadius: "8px",
-                          }}
-                        />
-                        <span style={{ color: "#0faba8", fontWeight: "600" }}>
-                          {p.color}
-                        </span>
-                        <h6>{p.id}</h6>
-                      </div>
                     </div>
                   );
                 })}
               </div>
-              <div></div>
+            </div>
+            <div style={{ textAlign: "right", marginRight: "40px" }}>
+              <Button variant="lightblue" sx={{ width: "auto" }}>
+                Save
+              </Button>
             </div>
           </Box>
         </Fade>

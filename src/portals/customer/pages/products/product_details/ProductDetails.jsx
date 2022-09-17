@@ -55,8 +55,8 @@ export default function ProductDetails() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const location = useLocation().pathname.split("/")[3]
-  console.log(location)
+  const location = useLocation().pathname.split("/")[3];
+  console.log(location);
   return (
     <AppLayout>
       <div className={styles.products}>
@@ -82,13 +82,19 @@ export default function ProductDetails() {
           </Grid>
           <Grid item xs={8}>
             <ProductInfo />
-            <Button
-              variant="lightblue"
-              sx={{ width: "auto", borderRadius: "5px" }}
-            >
-              Add to Import List
-            </Button>
-           {location !== "live-products" ? <ImportProductModal />: <LiveMapProductModal />}
+            {location !== "live-products" && (
+              <Button
+                variant="lightblue"
+                sx={{ width: "auto", borderRadius: "5px" }}
+              >
+                Add to Import List
+              </Button>
+            )}
+            {location !== "live-products" ? (
+              <ImportProductModal />
+            ) : (
+              <LiveMapProductModal />
+            )}
           </Grid>
         </Grid>
         {/* Product statistics */}

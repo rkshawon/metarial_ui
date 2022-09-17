@@ -19,6 +19,7 @@ import ProductTabMenu from "./ProductTabMenu";
 import VariantsTabMenu from "./VariantsTabMenu";
 import ProductImageGallery from "../../../../../admin/pages/sourcingList/productPage/components/ProductImageGallery";
 import ImagesTabMenu from "./ImagesTabMenu";
+import DescriptionTabMenu from "./DescriptionTabMenu";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -183,7 +184,7 @@ export default function ImportListTabs({ data }) {
         <ProductTabMenu data={data} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <TextareaAutosize
+        {/* <TextareaAutosize
           style={{
             width: "100%",
             padding: "20px",
@@ -193,15 +194,8 @@ export default function ImportListTabs({ data }) {
             borderColor: "lightgray",
           }}
           minRows={6}
-        >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-          similique voluptatibus fugit explicabo optio porro, omnis provident
-          autem exercitationem minus hic impedit amet ex. Expedita labore
-          voluptate debitis velit ut!Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Soluta similique voluptatibus fugit explicabo optio
-          porro, omnis provident autem exercitationem minus hic impedit amet ex.
-          Expedita labore voluptate debitis velit ut!
-        </TextareaAutosize>
+        ></TextareaAutosize> */}
+        <DescriptionTabMenu />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <VariantsTabMenu data={data} />

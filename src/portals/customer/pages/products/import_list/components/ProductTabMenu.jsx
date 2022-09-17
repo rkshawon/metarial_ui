@@ -1,8 +1,14 @@
-import { Grid, TextField } from "@mui/material";
+import { FormControl, Grid, MenuItem, Select, TextField } from "@mui/material";
 import React, { useState } from "react";
+import { customSvg } from "../../../../../../utils/customSvg";
 
 export default function ProductTabMenu({ data }) {
-    const [value, setValue] = useState("Foundation Matte Flip Flop");
+  const [value, setValue] = useState("Foundation Matte Flip Flop");
+  const [color, setColor] = React.useState(0);
+
+  const handleChange = (event) => {
+    setColor(event.target.value);
+  };
   return (
     <div>
       <Grid
@@ -26,40 +32,12 @@ export default function ProductTabMenu({ data }) {
                 <b style={{ color: "#3366FF" }}>Bashundara Official Store</b>
               </h6>
             </div>
-            {/* <div className="flexbox">
-              <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
-                <Select
-                  defaultValue={age}
-                  onChange={handleChange}
-                  displayEmpty
-                  inputProps={{ "aria-label": "Without label" }}
-                  renderValue={
-                    age !== ""
-                      ? undefined
-                      : () => <Placeholder>Actions</Placeholder>
-                  }
-                >
-                  <MenuItem value="">
-                    <span style={{ fontSize: "12px" }}>Mapping</span>
-                  </MenuItem>
-                  <MenuItem value={10}>
-                    <span style={{ fontSize: "12px" }}>Delivered</span>
-                  </MenuItem>
-                  <MenuItem value={20}>
-                    <span style={{ fontSize: "12px" }}>Unshipped</span>
-                  </MenuItem>
-                </Select>
-              </FormControl>
-              <Button
-                variant="deepblue"
-                sx={{ fontSize: "12px" }}
-                startIcon={<Add sx={{ color: "#fff" }} />}
-              >
-                Import to store
-              </Button>
-            </div> */}
           </div>
-          <Grid container spacing={2}>
+          <Grid
+            container
+            spacing={2}
+            sx={{ width: "70%", flexDirection: "column" }}
+          >
             <Grid item sm={6}>
               <div>
                 <h5>Title</h5>
@@ -78,7 +56,7 @@ export default function ProductTabMenu({ data }) {
                 />
               </div>
             </Grid>
-            <Grid item sm={6}>
+            {/* <Grid item sm={6}>
               <div>
                 <h5>Price</h5>
                 <TextField
@@ -95,10 +73,10 @@ export default function ProductTabMenu({ data }) {
                   defaultValue={data.price}
                 />
               </div>
-            </Grid>
+            </Grid> */}
             <Grid item sm={6}>
               <div>
-                <h5>Type</h5>
+                {/* <h5>Type</h5>
                 <TextField
                   sx={{
                     margin: 0,
@@ -111,10 +89,31 @@ export default function ProductTabMenu({ data }) {
                   size="small"
                   variant="outlined"
                   defaultValue="Shoe"
-                />
+                /> */}
+                <h5>Type</h5>
+                <FormControl fullWidth>
+                  <Select
+                    displayEmpty
+                    inputProps={{ "aria-label": "Without label" }}
+                    sx={{
+                      width: "100%",
+                      color: "gray",
+                      fontSize: "14px",
+                    }}
+                    size="small"
+                    value={color}
+                    onChange={handleChange}
+                    // sx={{ "& .MuiSelect-icon": { top: 10 } }}
+                    IconComponent={customSvg}
+                  >
+                    <MenuItem value={0}>Shoe</MenuItem>
+                    <MenuItem value={1}>Jewellery</MenuItem>
+                    <MenuItem value={2}>Electronics</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
             </Grid>
-            <Grid item sm={6}>
+            {/* <Grid item sm={6}>
               <div>
                 <h5>Variants</h5>
                 <TextField
@@ -131,7 +130,7 @@ export default function ProductTabMenu({ data }) {
                   defaultValue="Red"
                 />
               </div>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
       </Grid>

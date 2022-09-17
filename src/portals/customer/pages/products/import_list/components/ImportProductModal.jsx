@@ -30,7 +30,7 @@ export default function ImportProductModal() {
         variant="lightblue"
         onClick={handleOpen}
       >
-        Import Product
+        Push to shopify
       </Button>
       <Modal
         aria-labelledby="transition-modal-title"

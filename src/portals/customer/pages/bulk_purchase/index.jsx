@@ -9,7 +9,9 @@ import {
   InputLabel,
   MenuItem,
   Pagination,
+  PaginationItem,
   Select,
+  Stack,
   TextField,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";
@@ -20,6 +22,8 @@ import BulkProductDetailsModal from "./components/BulkProductDetailsModal";
 import ProductPurchaseModal from "./components/ProductPurchaseModal";
 import { customSvg } from "../../../../utils/customSvg";
 import "./style.bulk.css";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function BulkPurchase() {
   const [age, setAge] = React.useState(10);
@@ -101,8 +105,45 @@ export default function BulkPurchase() {
           ))}
         </Grid>
 
-        <div className={styles.bulk_product_pagination}>
-          <Pagination count={10} variant="outlined" color="secondary" />
+        <div
+          style={{
+            bottom: 10,
+            left: "45%",
+            padding: "5px 0",
+            borderRadius: "8px",
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "40px",
+          }}
+        >
+          <Stack
+            spacing={2}
+            sx={{
+              backgroundColor: "#fff",
+              boxShadow:
+                "rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px",
+              padding: "8px 15px",
+              borderRadius: "5px",
+            }}
+          >
+            <Pagination
+              count={10}
+              sx={{
+                "&.MuiPaginationItem-root": {
+                  color: "blue",
+                },
+              }}
+              renderItem={(item) => (
+                <PaginationItem
+                  components={{
+                    previous: ArrowBackIcon,
+                    next: ArrowForwardIcon,
+                  }}
+                  {...item}
+                />
+              )}
+            />
+          </Stack>
         </div>
       </div>
     </AppLayout>

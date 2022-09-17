@@ -10,14 +10,18 @@ import {
   InputAdornment,
   InputLabel,
   MenuItem,
+  Pagination,
+  PaginationItem,
+  Stack,
   TextField,
 } from "@mui/material";
 import DisputeDataTable from "./DisputeDataTable";
 import { chipColorDecisionMaker } from "../../../../utils/chipColorDecisionMaker";
 import DisputeTableCell from "./DisputeTableCell";
-
 import styles from "../../../../styles/customerStyles.module.css";
 import ModifiedMenu from "../../components/ModifiedMenu";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -168,6 +172,47 @@ export default function DisputeTabs() {
       <TabPanel value={value} index={2}>
         Item Three
       </TabPanel>
+
+      <div
+        style={{
+          bottom: 10,
+          left: "45%",
+          padding: "5px 0",
+          borderRadius: "8px",
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "40px",
+        }}
+      >
+        <Stack
+          spacing={2}
+          sx={{
+            backgroundColor: "#fff",
+            boxShadow:
+              "rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px",
+            padding: "8px 15px",
+            borderRadius: "5px",
+          }}
+        >
+          <Pagination
+            count={10}
+            sx={{
+              "&.MuiPaginationItem-root": {
+                color: "blue",
+              },
+            }}
+            renderItem={(item) => (
+              <PaginationItem
+                components={{
+                  previous: ArrowBackIcon,
+                  next: ArrowForwardIcon,
+                }}
+                {...item}
+              />
+            )}
+          />
+        </Stack>
+      </div>
     </Box>
   );
 }

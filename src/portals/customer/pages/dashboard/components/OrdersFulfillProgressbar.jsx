@@ -4,6 +4,7 @@ import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
 import { styled } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   marginTop: "20px",
@@ -33,9 +34,10 @@ export default function OrdersFulfillProgressbar() {
         <div className="flexbox">
           <div
             style={{
-              backgroundColor: "#FFDA6B",
+              backgroundColor: "#8D40FF",
               padding: "5px 15px",
               borderRadius: "13.5px",
+              color: "white",
             }}
           >
             0
@@ -51,7 +53,9 @@ export default function OrdersFulfillProgressbar() {
             Orders to fulfill
           </div>
         </div>
-        <ArrowForwardIosIcon sx={{ fontSize: "20px", color: "lightgray" }} />
+        <Link to="/customer/orders">
+          <ArrowForwardIosIcon sx={{ fontSize: "20px", color: "lightgray" }} />
+        </Link>
       </div>
       <div>
         <BorderLinearProgress variant="determinate" value={0} />

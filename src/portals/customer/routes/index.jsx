@@ -27,8 +27,6 @@ export default function CustomerRoutes() {
         <Route path="homepage" element={<Dashboard />} />
         <Route path="products" element={<Product />} />
         <Route path="stepper" element={<FinalizePurchaseStepper />} />
-        <Route path="products/branding" element={<Branding />} />
-        <Route path="products/bundle" element={<ProductBundle />} />
         <Route path="products/:id" element={<ProductDetails />} />
         <Route path="products/live-products" element={<LiveProducts />} />
         <Route path="products/live-products/:id" element={<ProductDetails />} />
@@ -40,10 +38,13 @@ export default function CustomerRoutes() {
         <Route path="orders" element={<Order />} />
         <Route path="orders/dispute-list" element={<DisputeList />} />
         <Route path="orders/order-tracking" element={<OrderTracking />} />
-        <Route path="bulk" element={<BulkPurchase />} />
         <Route path="payments" element={<Payment />} />
         <Route path="notifications" element={<Notification />} />
-        <Route path="storage" element={<ExtraStorage />} />
+        <Route path="extra" element={<ExtraStorage />} />
+        <Route path="extra/bulk" element={<BulkPurchase />} />
+        <Route path="extra/storage" element={<ExtraStorage />} />
+        <Route path="extra/branding" element={<Branding />} />
+        <Route path="extra/bundle" element={<ProductBundle />} />
         <Route path="setting" element={<Settings />} />
       </Route>
     </Routes>
