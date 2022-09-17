@@ -37,6 +37,11 @@
   cursor: pointer;
   margin-right: 5px;
 }
+.newNotificationBox{
+  background: rgba(234, 235, 236, 0.863);
+  padding:10px 20px;
+  margin-bottom: 2px;
+}
 
 /* @media only screen and (max-width: 900) {
   body {

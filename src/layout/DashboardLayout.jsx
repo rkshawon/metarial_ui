@@ -15,14 +15,14 @@ function AppLayout({ children }) {
       </Grid>
       <Grid
         item
-        xs={sidebarExpand ? 2.5 : 1}
+        xs={sidebarExpand ? 2 : 0.5}
         style={{ transition: "all 0.5s ease-in-out" }}
       >
         <CollapsableSidebar sidebarUtil={{ sidebarExpand, setSidebarExpand }} />
       </Grid>
       <Grid
         item
-        xs={sidebarExpand ? 9.5 : 11}
+        xs={sidebarExpand ? 10 : 11.5}
         style={{
           height: "100vh",
           overflowY: "scroll",
@@ -38,11 +38,11 @@ function AppLayout({ children }) {
             // flexDirection: "column",
             // alignItems: "center",
             width: "100%",
-            margin: "auto",
-            maxWidth: "1250px",
+            padding: "30px",
+            // maxWidth: "1250px",
           }}
         >
-          {children}
+          <div>{children}</div>
         </main>
       </Grid>
     </Grid>

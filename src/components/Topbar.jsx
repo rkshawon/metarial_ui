@@ -1,19 +1,15 @@
 import styles from "../styles/globalStyles.module.css";
 import ProfilePic from "../assets/img/dummyImg/profile.png";
 import { Icon } from "@iconify/react";
-import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  Menu,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import Notifications from "@mui/icons-material/Notifications";
+import { Badge, Box, Menu, MenuItem, Select } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useState } from "react";
 import LanguageIcon from "@mui/icons-material/Language";
+import NotificationModal from "./NotificationModal";
+import { Link } from "react-router-dom";
+import ConnectStoreModal from "../portals/customer/pages/dashboard/components/ConnectStoreModal";
 
 export default function Topbar() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -72,7 +68,8 @@ export default function Topbar() {
             </Select>
           </div>
           <div style={{ display: "flex", alignItem: "center" }}>
-            <Icon icon="akar-icons:bell" color="#9d9d9d" width="20" />
+            {/* <Icon icon="akar-icons:bell" color="#9d9d9d" width="20" /> */}
+            <NotificationModal />
           </div>
 
           {/* <img src={ProfilePic} alt="" />
@@ -104,24 +101,24 @@ export default function Topbar() {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem
-              sx={{ fontSize: "14px", color: "#9d9d9d" }}
-              onClick={handleClose}
-            >
-              Profile
-            </MenuItem>
-            <MenuItem
-              sx={{ fontSize: "14px", color: "#9d9d9d" }}
-              onClick={handleClose}
-            >
-              Setting
-            </MenuItem>
-            <MenuItem
-              sx={{ fontSize: "14px", color: "#9d9d9d" }}
-              onClick={handleClose}
-            >
-              Add stores
-            </MenuItem>
+            <Link to="/customer/setting">
+              <MenuItem
+                sx={{ fontSize: "14px", color: "#9d9d9d" }}
+                onClick={handleClose}
+              >
+                Profile
+              </MenuItem>
+            </Link>
+            <Link to="/customer/setting">
+              <MenuItem
+                sx={{ fontSize: "14px", color: "#9d9d9d" }}
+                onClick={handleClose}
+              >
+                Setting
+              </MenuItem>
+            </Link>
+
+            <ConnectStoreModal />
             <MenuItem
               sx={{ fontSize: "14px", color: "#9d9d9d" }}
               onClick={handleClose}

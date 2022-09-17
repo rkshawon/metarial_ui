@@ -5,6 +5,22 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ModifiedMenuItem from "./ModifiedMenuItem";
 import img from "../../portals/customer/assets/img.png";
 import { Box } from "@mui/system";
+import AddBusinessIcon from "@mui/icons-material/AddBusiness";
+
+const dummyStore = [
+  {
+    name: "Shopify Shopify",
+    img: img,
+  },
+  {
+    name: "Ali Express",
+    img: img,
+  },
+  {
+    name: "Daraz",
+    img: img,
+  },
+];
 
 export default function ModifiedMenu({ sidebarExpand }) {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -14,6 +30,15 @@ export default function ModifiedMenu({ sidebarExpand }) {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const style = {
+    display: "flex",
+    padding: "10px 20px",
+    alignItems: "center",
+    "&:hover": {
+      color: "#8D40FF",
+      backgroundColor: "#F2E9FF",
+    },
   };
   return (
     <div style={{ width: "90%", marginBottom: "20px" }}>
@@ -79,52 +104,52 @@ export default function ModifiedMenu({ sidebarExpand }) {
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}
-        sx={{ maxWidth: "250px" }}
+        sx={{ maxWidth: "225px" }}
       >
+        {dummyStore.map((store, index) => {
+          return (
+            <Box onClick={handleClose} sx={style}>
+              <img
+                style={{ height: "25px", width: "25px" }}
+                src={store.img}
+                alt=""
+              />
+              <ModifiedMenuItem itemName={store.name} />
+            </Box>
+          );
+        })}
         <Box
           onClick={handleClose}
           sx={{
+            width: "80%",
+            height: "40px",
             display: "flex",
             padding: "10px 20px",
+            marginLeft: "10%",
+            marginTop: "10px",
             alignItems: "center",
+            border: "1px dashed lightgray",
+            borderRadius: "5px",
+            cursor: "pointer",
             "&:hover": {
-              color: "#8D40FF",
-              backgroundColor: "#F2E9FF",
+              backgroundColor: "#eeeeee",
             },
           }}
         >
-          <img style={{ height: "25px", width: "25px" }} src={img} alt="" />
-          <ModifiedMenuItem itemName="Shopify" />
-        </Box>
-        <Box
-          onClick={handleClose}
-          sx={{
-            display: "flex",
-            padding: "10px 20px",
-            alignItems: "center",
-            "&:hover": {
-              color: "#8D40FF",
-              backgroundColor: "#F2E9FF",
-            },
-          }}
-        >
-          <img style={{ height: "25px", width: "25px" }} src={img} alt="" />
-          <ModifiedMenuItem itemName="Ali Express Ali Express Ali Express Ali Express Ali Express Ali Express" />
-        </Box>{" "}
-        <Box
-          onClick={handleClose}
-          sx={{
-            display: "flex",
-            padding: "10px 20px",
-            alignItems: "center",
-            "&:hover": {
-              color: "#8D40FF",
-              backgroundColor: "#F2E9FF",
-            },
-          }}
-        >
-          <img style={{ height: "25px", width: "25px" }} src={img} alt="" />
-          <ModifiedMenuItem itemName="Shopify" />
+          <AddBusinessIcon sx={{ color: "gray" }} />
+          <MenuItem
+            sx={{
+              display: "flex",
+              fontSize: "14px",
+              fontWeight: "600",
+              color: "gray",
+              "&:hover": {
+                backgroundColor: "#eeeeee",
+              },
+            }}
+          >
+            Add Store
+          </MenuItem>
         </Box>
       </Menu>
     </div>

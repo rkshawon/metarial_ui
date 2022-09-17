@@ -163,6 +163,24 @@ const theme = createTheme({
             },
           },
         },
+        {
+          props: { variant: "title_purple" },
+          style: {
+            marginTop: "0",
+            width: "100%",
+            height: "40px",
+            border: "none",
+            outline: "none",
+            color: "#8D40FF",
+            textTransform: "capitalize",
+            fontWeight: "700",
+            fontSize: "14px",
+            borderRadius: "5px",
+            "&:hover": {
+              background: "#f2dcf5",
+            },
+          },
+        },
       ],
     },
     MuiTab: {

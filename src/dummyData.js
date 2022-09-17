@@ -131,6 +131,7 @@ export const overview_cards = [
     title: "Revenue",
     price: "€8500",
     count: "",
+    link: "",
   },
   {
     id: 2,
@@ -138,6 +139,7 @@ export const overview_cards = [
     title: "COGS",
     price: "€2675",
     count: "",
+    link: "",
   },
   {
     id: 3,
@@ -145,6 +147,7 @@ export const overview_cards = [
     title: "Open Orders",
     price: "",
     count: 54,
+    link: "/customer/orders",
   },
   {
     id: 4,
@@ -152,6 +155,7 @@ export const overview_cards = [
     title: "New Notification",
     price: "",
     count: 16,
+    link: "/customer/notifications",
   },
   {
     id: 5,
@@ -159,6 +163,7 @@ export const overview_cards = [
     title: "Disputes",
     price: "",
     count: 3,
+    link: "/customer/orders/dispute-list",
   },
 ];
 

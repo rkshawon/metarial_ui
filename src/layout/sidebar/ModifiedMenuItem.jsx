@@ -1,9 +1,13 @@
 import { MenuItem } from "@mui/material";
 import React, { useState } from "react";
 
-export default function ModifiedMenuItem({ itemName }) {
+export default function ModifiedMenuItem({ itemName, close, changeDataValue }) {
   return (
     <MenuItem
+      onClick={() => {
+        close();
+        changeDataValue(itemName);
+      }}
       sx={{
         fontSize: "14px",
         fontWeight: "500",
@@ -15,7 +19,7 @@ export default function ModifiedMenuItem({ itemName }) {
     >
       <div
         style={{
-          width: "150px",
+          width: "120px",
           textOverflow: "ellipsis",
           whiteSpace: "nowrap",
           overflow: "hidden",

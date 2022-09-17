@@ -21,6 +21,7 @@ export const SidebarItems = [
       {
         key: 100,
         text: "Products",
+        route: "products",
         link: "/customer/products",
         icon: <FiClipboard fontSize="20px" />,
         isOpen: false,
@@ -29,6 +30,7 @@ export const SidebarItems = [
       {
         key: 101,
         text: "Import List",
+        route: "import-list",
         link: "/customer/products/import-list",
         icon: <FiClipboard fontSize="20px" />,
         isOpen: false,
@@ -37,6 +39,7 @@ export const SidebarItems = [
       {
         key: 103,
         text: "Live Products",
+        route: "live-products",
         link: "/customer/products/live-products",
         icon: <FiClipboard fontSize="20px" />,
         isOpen: false,
@@ -54,6 +57,7 @@ export const SidebarItems = [
       {
         key: 100,
         text: "Orders",
+        route: "orders",
         link: "/customer/orders",
         icon: <FiClipboard fontSize="20px" />,
         isOpen: false,
@@ -63,6 +67,7 @@ export const SidebarItems = [
       {
         key: 101,
         text: "Dispute List",
+        route: "dispute-list",
         link: "/customer/orders/dispute-list",
         icon: <FiClipboard fontSize="20px" />,
         isOpen: false,
@@ -71,6 +76,7 @@ export const SidebarItems = [
       {
         key: 102,
         text: "Order Tracking",
+        route: "order-tracking",
         link: "/customer/orders/order-tracking",
         icon: <FiClipboard fontSize="20px" />,
         isOpen: false,
@@ -102,7 +108,8 @@ export const SidebarItems = [
       {
         key: 100,
         text: "Branding",
-        link: "/customer/products/branding",
+        link: "/customer/extra/branding",
+        route: "branding",
         icon: <FiClipboard fontSize="20px" />,
         isOpen: false,
         nestedItem: null,
@@ -110,22 +117,25 @@ export const SidebarItems = [
       {
         key: 101,
         text: "Bundle",
-        link: "/customer/products/bundle",
+        link: "/customer/extra/bundle",
+        route: "bundle",
         icon: <FiClipboard fontSize="20px" />,
         isOpen: false,
         nestedItem: null,
       },
       {
         key: 102,
-        text: "Bulk",
-        link: "/customer/bulk",
+        text: "Bulk Purchase",
+        link: "/customer/extra/bulk",
+        route: "bulk",
         icon: <Icon icon="akar-icons:shipping-box-v1" width="20" height="20" />,
         nestedItem: null,
       },
       {
         key: 103,
         text: "Extra storage",
-        link: "/customer/storage",
+        route: "storage",
+        link: "/customer/extra/storage",
         icon: <FlipToFrontIcon width="20px" height="20px" />,
         nestedItem: null,
       },

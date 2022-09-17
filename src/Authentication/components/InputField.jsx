@@ -12,7 +12,7 @@ export default function InputField({
   size,
   startAdornment,
   width,
-  value
+  value,
 }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
@@ -90,8 +90,10 @@ export default function InputField({
             width: width ? width : "100%",
           }}
           label={label}
+          type={type}
           color="primary"
-          value={value}
+          // value={value}
+          defaultValue={value}
           size={size}
           placeholder={placeholder}
           InputProps={{

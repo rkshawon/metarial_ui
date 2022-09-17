@@ -147,17 +147,13 @@ label:before {
 .css-1aquho2-MuiTabs-indicator {
   background-color: #8d40ff !important;
 }
-/* .Mui-selected {
-  background-color: #fff !important;
-  color: #8d40ff !important;
-  font-weight: bold !important;
-} */
 .css-heg063-MuiTabs-flexContainer {
   background-color: #eeeeee !important;
   border-radius: 10px 10px 0px 0px !important;
 }
 .hide_scrollbar::-webkit-scrollbar {
   display: none;
+  width: 0px;
 }
 .css-ffi4rr-MuiInputBase-input-MuiOutlinedInput-input {
   font-size: 12px !important;
@@ -216,3 +212,76 @@ overflow:hidden
 /* ::-webkit-scrollbar-button {
   height: 80px;
 } */
+.active {
+  color: red;
+}
+
+/* upload images styles  */
+.imageTabLabel {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px dotted black;
+  border-radius: 20px;
+  width: 10rem;
+  height: 10rem;
+  cursor: pointer;
+  font-size: large;
+}
+
+.imageTabLabel span {
+  font-weight: lighter;
+  font-size: small;
+  padding-top: 0.5rem;
+}
+
+input {
+  display: none;
+}
+
+.image button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+  border: none;
+  color: white;
+  background-color: lightcoral;
+}
+
+.image button:hover {
+  background-color: red;
+}
+
+.image p {
+  padding: 0 0.5rem;
+  margin: 0;
+}
+
+.upload-btn {
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  border-radius: 20px;
+  width: 10rem;
+  height: 3rem;
+  color: white;
+  background-color: green;
+}
+
+label:hover,
+.upload-btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.error {
+  text-align: center;
+}
+
+.error span {
+  color: red;
+}

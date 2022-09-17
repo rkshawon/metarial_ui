@@ -1,27 +1,29 @@
 import * as React from "react";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
+import { useSelector, useDispatch } from "react-redux";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
 import IconButton from "@mui/material/IconButton";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import { Collapse } from "@mui/material";
 import { AdminSidebarItems, SidebarItems } from "./SidebarItems";
 import { Link, NavLink, useLocation } from "react-router-dom";
 // import logo from "../../assets/img/headericon.png";
 import usendLogo from "../../assets/img/usendlogo.png";
 
-import { ExpandMore, ExpandLess, Settings } from "@mui/icons-material";
+import { Settings } from "@mui/icons-material";
 import ModifiedMenu from "./ModifiedMenu";
+import { setOpen } from "../../redux/slices/navSlice";
+import { useState } from "react";
 
-const drawerWidth = "20.83%";
+const drawerWidth = "16.67%";
 
 const isExpandedMixin = (theme) => ({
   width: drawerWidth,
@@ -38,9 +40,9 @@ const closedMixin = (theme) => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: "hidden",
-  width: `calc(${theme.spacing(7)} + 1px)`,
+  width: `calc(${theme.spacing(10)} + 1px)`,
   [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
+    width: `calc(${theme.spacing(10)} + 1px)`,
   },
 });
 
@@ -89,25 +91,27 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function CollapsableSidebar({ sidebarUtil }) {
-  // const isExpand = useSelector((navSelector) => navSelector.isExpand);
+  const open = useSelector((navSelector) => navSelector.open);
+  const dispatch = useDispatch();
+
+  const handleExpand = (menu) => {
+    open ? dispatch(setOpen("")) : dispatch(setOpen(menu.key));
+  };
+
+  const handleNestedMenu = (menu) => {
+    dispatch(setOpen(menu.key));
+  };
+
   const { sidebarExpand, setSidebarExpand } = sidebarUtil;
 
   const [sidebarLock, setSidebarLock] = React.useState(true);
-  const [open, setOpen] = React.useState("");
 
   const location = useLocation().pathname.split("/")[2];
   const nestedLocation = useLocation().pathname.split("/")[3];
 
-  const [active, setActive] = React.useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleExpand = (key) => {
-    open ? setOpen("") : setOpen(key);
-  };
-
-  const handleActiveMenu = (menu) => {
-    menu.nestedItem ? handleExpand(menu.key) : setActive(menu.text);
-  };
-
+  console.log(open);
   return (
     <Box
       sx={{
@@ -123,14 +127,22 @@ export default function CollapsableSidebar({ sidebarUtil }) {
           position="fixed"
           isExpand={sidebarExpand}
           sx={{
-            width: "65px",
+            width: "81px",
             background: "#fff",
             height: "39px",
             left: 0,
             marginTop: "40px",
+            boxShadow: "none",
+            border: "1px dashed lightgray",
           }}
         >
-          <Toolbar sx={{ height: "39px", background: "white" }}>
+          <Toolbar
+            sx={{
+              height: "39px",
+              background: "white",
+              // transition: "all 0.5s ease-in-out",
+            }}
+          >
             <IconButton
               color="inherit"
               aria-label="isExpand drawer"
@@ -157,7 +169,12 @@ export default function CollapsableSidebar({ sidebarUtil }) {
         variant="permanent"
         isExpand={sidebarExpand}
         className="drawer_scrollbar"
-        PaperProps={{ style: { marginTop: "40px" } }}
+        PaperProps={{
+          style: {
+            marginTop: "40px",
+            borderRightStyle: "dashed",
+          },
+        }}
       >
         <DrawerHeader
           style={{
@@ -211,10 +228,11 @@ export default function CollapsableSidebar({ sidebarUtil }) {
                     width: "90%",
                     marginBottom: "5px",
                   }}
+                  onClick={() => setIsOpen(!isOpen)}
                 >
                   <ListItemButton
                     selected={location === sidebarItem.text.toLowerCase()}
-                    onClick={() => handleActiveMenu(sidebarItem)}
+                    onClick={() => handleExpand(sidebarItem)}
                     sx={{
                       borderRadius: "5px",
                       padding: `${sidebarExpand ? `10px 30px` : "13px 20px"}`,
@@ -228,16 +246,22 @@ export default function CollapsableSidebar({ sidebarUtil }) {
                         background: "rgba(142, 65, 254, 0.11)",
                         fontWeight: 600,
                       },
-                      "&:hover": {
-                        "&.Mui-selected": {
-                          color: "#8D40FF",
-                          background: "rgba(142, 65, 254, 0.11)",
-                          fontWeight: 600,
-                        },
-                      },
+                      // "&:hover": {
+                      //   "&.Mui-selected": {
+                      //     color: "#8D40FF",
+                      //     background: "rgba(142, 65, 254, 0.11)",
+                      //     fontWeight: 600,
+                      //   },
+                      // },
                     }}
                   >
-                    <ListItemIcon sx={{ color: "inherit", minWidth: "2.2em" }}>
+                    <ListItemIcon
+                      sx={{
+                        color: "inherit",
+                        minWidth: "2.2em",
+                        marginLeft: `${!sidebarExpand ? "5px" : "0px"}`,
+                      }}
+                    >
                       {sidebarItem.icon}
                     </ListItemIcon>
                     {sidebarExpand &&
@@ -271,99 +295,156 @@ export default function CollapsableSidebar({ sidebarUtil }) {
                   {sidebarItem.nestedItem !== null &&
                     sidebarItem.nestedItem.map((nestedItem, index) => {
                       return (
-                        <Collapse
-                          in={open === sidebarItem.key}
-                          timeout="auto"
-                          // unmountOnExit
-                          key={index}
-                        >
-                          <Link
-                            to={nestedItem.link}
-                            key={index}
-                            style={{
-                              textDecoration: "none",
-                              color: "inherit",
-                            }}
-                          >
-                            <List component="div" disablePadding>
-                              <ListItemButton
-                                onClick={() => handleActiveMenu(nestedItem)}
-                                sx={{
-                                  pl: 4,
-                                  margin: "5px 0",
-                                  borderRadius: "5px",
-                                  "&:hover": {
-                                    color: "#8D40FF",
-                                    backgroundColor: "rgba(142, 65, 254, 0.11)",
-                                  },
-                                  padding: "10px 50px",
-                                  "&.Mui-selected": {
-                                    color: "#8D40FF",
-                                    background: "rgba(142, 65, 254, 0.11)",
-                                    fontWeight: 600,
-                                  },
+                        <>
+                          {sidebarExpand && (
+                            <Collapse
+                              in={open === sidebarItem.key}
+                              timeout="auto"
+                              // unmountOnExit
+                              key={index}
+                            >
+                              <NavLink
+                                activeClassName="active"
+                                to={nestedItem.link}
+                                key={index}
+                                style={{
+                                  textDecoration: "none",
+                                  color: "inherit",
                                 }}
-                                selected={nestedLocation === nestedItem.text}
                               >
-                                {open && (
-                                  <h5
-                                    style={{
-                                      fontSize: "14px",
-                                      fontWeight: 400,
+                                <List component="div" disablePadding>
+                                  <ListItemButton
+                                    onClick={() =>
+                                      handleNestedMenu(sidebarItem)
+                                    }
+                                    sx={{
+                                      pl: 4,
+                                      margin: "5px 0",
+                                      borderRadius: "5px",
+                                      "&:hover": {
+                                        color: "#8D40FF",
+                                        backgroundColor: "#fff",
+                                      },
+                                      padding: "10px 50px",
+                                      "&.Mui-selected": {
+                                        color: "#8D40FF",
+                                        background: "#fff",
+                                        fontWeight: 600,
+                                      },
                                     }}
+                                    selected={
+                                      nestedLocation !== undefined
+                                        ? nestedLocation === nestedItem.route
+                                        : location ===
+                                          nestedItem.text.toLowerCase()
+                                    }
                                   >
-                                    {nestedItem.text}
-                                  </h5>
-                                )}
-                              </ListItemButton>
-                            </List>
-                          </Link>
-                        </Collapse>
+                                    {open && (
+                                      <div
+                                        style={{
+                                          display: "flex",
+                                          alignItems: "center",
+                                        }}
+                                      >
+                                        <div
+                                          style={{
+                                            width: "10PX",
+                                            height: "10px",
+                                            marginRight: "15px",
+                                          }}
+                                        >
+                                          {nestedLocation ===
+                                          nestedItem.route ? (
+                                            <div
+                                              style={{
+                                                width: "8px",
+                                                height: "8px",
+                                                borderRadius: "50%",
+                                                background: "#8D40FF",
+                                                transition:
+                                                  "all 0.3s ease-in-out",
+                                              }}
+                                            ></div>
+                                          ) : (
+                                            <div
+                                              style={{
+                                                width: "5px",
+                                                height: "5px",
+                                                borderRadius: "50%",
+                                                background: "gray",
+                                              }}
+                                            ></div>
+                                          )}
+                                        </div>
+
+                                        <h5
+                                          style={{
+                                            fontSize: "14px",
+                                            margin: 0,
+                                            fontWeight:
+                                              nestedLocation ===
+                                                nestedItem.route ||
+                                              location ===
+                                                nestedItem.text.toLowerCase()
+                                                ? 600
+                                                : 400,
+                                          }}
+                                        >
+                                          {nestedItem.text}
+                                        </h5>
+                                      </div>
+                                    )}
+                                  </ListItemButton>
+                                </List>
+                              </NavLink>
+                            </Collapse>
+                          )}
+                        </>
                       );
                     })}
                 </Link>
               </>
             );
           })}
-          <div
-            className="flexbox"
+        </List>
+        <div
+          className="flexbox"
+          style={{
+            marginBottom: "50px",
+            display: "flex",
+            justifyContent: `${sidebarExpand ? "flex-start" : "center"}`,
+            marginLeft: `${sidebarExpand ? "12%" : "0"}`,
+            position: "absolute",
+            bottom: 20,
+            width: "100%",
+          }}
+        >
+          <NavLink
+            to="/customer/setting"
+            className={(navData) => (navData.isActive ? "active" : "")}
             style={{
-              marginTop: "70px",
-              marginBottom: "50px",
-              width: "90%",
+              textDecoration: "none",
+              color: "inherit",
               display: "flex",
-              justifyContent: "center",
+              alignItems: "center",
+              justifyContent: "space-between",
             }}
           >
-            <NavLink
-              to="/customer/setting"
-              className={(navData) => (navData.isActive ? "active" : "")}
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-
-                width: "80%",
-              }}
-            >
-              <div style={{ display: "flex" }}>
-                <Settings style={{ marginRight: 5 }} />
-                {sidebarExpand && (
-                  <h5
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: 400,
-                    }}
-                  >
-                    Settings
-                  </h5>
-                )}
-              </div>
-            </NavLink>
-          </div>
-        </List>
+            <div style={{ display: "flex" }}>
+              <Settings style={{ marginRight: 5 }} />
+              {sidebarExpand && (
+                <h5
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: 400,
+                  }}
+                >
+                  Settings
+                </h5>
+              )}
+            </div>
+          </NavLink>
+        </div>
       </Drawer>
     </Box>
   );
