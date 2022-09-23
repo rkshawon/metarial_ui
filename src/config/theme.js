@@ -67,6 +67,22 @@ const theme = createTheme({
           },
         },
         {
+          props: { variant: "white" },
+          style: {
+            background: "#ffffff",
+            color: "#0000000",
+            height: "30px",
+            padding: "18px 15px",
+            borderRadius: "3px",
+            textTransform: "none",
+            fontSize: "12px",
+            fontWeight: "700",
+            "&:hover": {
+              background: "rgba(256, 256, 256, .8)",
+            },
+          },
+        },
+        {
           props: { variant: "deepbluemini" },
           style: {
             margin: "1em 0",
@@ -183,18 +199,76 @@ const theme = createTheme({
         },
       ],
     },
+    MuiFormLabel: {
+      styleOverrides: {
+        root: {
+          ".MuiInputLabel-root": {
+            "&:hover:": {
+              boxShadow: "none",
+            },
+          },
+        },
+      },
+    },
+    // MuiPaper: {
+    //   styleOverrides: {
+    //     root: {
+    //       "&.MuiTableContainer-root": { border: "none" },
+    //     },
+    //   },
+    // },
+    // MuiTableContainer: {
+    //   styleOverrides: {
+    //     root: {
+
+    //     },
+    //   },
+    // },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          "&.MuiTableCell-root": {
+            borderBottom: "none",
+            padding: "12px 16px",
+          },
+        },
+      },
+    },
+    // MuiTab: {
+    //   styleOverrides: {
+    //     root: {
+    //       "&.MuiButtonBase-root-MuiTab-root.Mui-selected": {
+    //         margin: "0 16px",
+    //         padding: "12px 0px",
+    //         minWidth: "0px",
+    //         background: "red",
+    //         color: "red",
+    //       },
+    //     },
+    //   },
+    // },
+    // MuiTableRow: {
+    //   styleOverrides: {
+    //     root: {
+    //       borderBottom: "1px solid #ebebeb",
+    //       "&:hover": {
+    //         backgroundColor: "rgba(244,244,244,.5)",
+    //       },
+    //     },
+    //   },
+    // },
     MuiTab: {
       styleOverrides: {
         root: {
+          "&.Mui-selected": {
+            margin: "0 16px",
+            padding: "12px 0px",
+            minWidth: "0px",
+            color: "#9155fd",
+          },
           textTransform: "capitalize",
           wrapper: {
             flexDirection: "row",
-          },
-          MuiTabIndicator: {
-            backgroundColor: "red",
-          },
-          ".Mui-selected": {
-            color: "red",
           },
         },
       },
@@ -235,6 +309,9 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           fontSize: "9px",
+          "&:hover": {
+            boxShadow: "none",
+          },
         },
       },
     },

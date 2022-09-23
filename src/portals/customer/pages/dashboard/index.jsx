@@ -6,11 +6,12 @@ import Statistics from "./components/Statistics";
 // import AppLayout from "../../../../layout/DashboardLayout";
 import Welcome from "./components/Welcome";
 import WelcomeModal from "./components/WelcomeModal";
+import styles from "../../styles/customerStyles.module.css";
 
 export default function Dashboard() {
   return (
     <AppLayout>
-      <Box sx={{ padding: "20px" }}>
+      <Box className={styles.bulk_purchase}>
         <Box sx={{ marginBottom: "2em" }}>
           <WelcomeModal />
           <Breadcrumbs

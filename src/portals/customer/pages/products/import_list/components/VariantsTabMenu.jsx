@@ -1,12 +1,12 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
-import InputField from "../../../../../../Authentication/components/InputField";
-import { FormControl, MenuItem, Select } from "@mui/material";
-import { customSvg } from "../../../../../../utils/customSvg";
+import { Button } from "@mui/material";
 import { rows } from "../variantsRow";
 import VariantActions from "./VariantActions";
 import { useMemo } from "react";
+import { Add } from "@mui/icons-material";
+import EuroIcon from "@mui/icons-material/Euro";
 
 export default function VariantsTabMenu() {
   // const [color, setColor] = React.useState({ id: 0 });
@@ -23,26 +23,35 @@ export default function VariantsTabMenu() {
   const [page, setPage] = React.useState(5);
   const columns = useMemo(
     () => [
-      { field: "id", headerName: "ID", width: 70 },
+      // { field: "id", headerName: "ID", width: 70 },
       {
         field: "Product",
         headerName: "Product",
-        width: 100,
+        width:200,
         renderCell: (params) => {
           return (
-            <img
-              src={params.row.product.img}
-              alt="product"
-              style={{ width: "50px", height: "50px" }}
-            />
+            <div style={{ display: "flex" }}>
+              <img
+                src={params.row.product.img}
+                alt="product"
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "8px",
+                  marginRight: "10px",
+                }}
+              />
+              <h6>{params.row.product.title}</h6>
+            </div>
           );
         },
       },
-      { field: "sku", headerName: "Sku", width: 130 },
+      { field: "sku", headerName: "Sku", flex: 1 },
       {
         field: "color",
         headerName: "Color",
-        width: 100,
+        // width: 100,
+        flex: 1,
         type: "singleSelect",
         valueOptions: ["Red", "Green", "Blue"],
         editable: true,
@@ -50,7 +59,7 @@ export default function VariantsTabMenu() {
       {
         field: "size",
         headerName: "Size",
-        width: 100,
+        flex: 1,
         type: "singleSelect",
         valueOptions: ["M", "L", "XL", "XXL"],
         // renderCell: (params) => {
@@ -83,59 +92,114 @@ export default function VariantsTabMenu() {
       {
         field: "cost",
         headerName: "Cost",
-        width: 70,
+        flex: 1,
+        renderCell: (params) => {
+          return (
+            <>
+               €
+              {params.row.cost}
+            </>
+          );
+        },
       },
       {
         field: "shipping_cost",
         headerName: "Shipping Cost",
         width: 130,
+        renderCell: (params) => {
+          return (
+            <>
+               €
+              {params.row.shipping_cost}
+            </>
+          );
+        },
       },
       {
         field: "price_value",
         headerName: "Price Value",
-        width: 100,
-        // renderCell: (params) => {
-        //   return (
-        //     <InputField
-        //       //   label="Login E-mail or Phone"
-        //       placeholder="Price Value"
-        //       type="number"
-        //       size="small"
-        //       value={params.row.price_value}
-        //     />
-        //   );
-        // },
-        // type: "number",
+        flex: 1,
+        renderCell: (params) => {
+          return (
+            <>
+               €
+              {params.row.price_value}
+            </>
+          );
+        },
+        type: "number",
         editable: true,
       },
       {
         field: "compare_price_value",
         headerName: "Compare Price Value",
-        width: 160,
-        headerAlign: "left",
-        // type: "number",
+        flex: 1,
+        headerAlign: "center",
+        type: "number",
         editable: true,
-      },
-      {
-        field: "actions",
-        headerName: "Actions",
-        width: 130,
-        type: "actions",
         renderCell: (params) => {
-          return <VariantActions {...{ params, rowId, setRowId }} />;
+          return (
+            <>
+              €
+              {params.row.compare_price_value}
+            </>
+          );
         },
       },
+      // {
+      //   field: "actions",
+      //   headerName: "Actions",
+      //   width: 130,
+      //   type: "actions",
+      //   renderCell: (params) => {
+      //     return <VariantActions {...{ params, rowId, setRowId }} />;
+      //   },
+      // },
     ],
     [rowId]
   );
 
   return (
     <div style={{ height: 400, width: "100%" }}>
+      {/* <div style={{ textAlign: "right" }}>
+        <Button
+          variant="deepbluemini"
+          startIcon={<Add style={{ color: "#fff" }} />}
+          sx={{ marginBottom: "10px" }}
+        >
+          Add Variant
+        </Button>
+      </div> */}
       <DataGrid
         rows={rows}
         columns={columns}
         pageSize={page}
+        sx={{
+          "& .MuiDataGrid-iconSeparator": {
+            color: "transparent",
+          },
+          "& .MuiDataGrid-cell": {
+            borderBottom: 0,
+            outline: "none",
+          },
+          "& .MuiDataGrid-columnHeadersInner": {
+            background: "#fafdfd",
+            border: "none",
+          },
+          "&.MuiBox-root-css-19kzrtu": {
+            padding: 0,
+          },
+          "& .MuiDataGrid-virtualScroller": {
+            overflow: "auto",
+            // position: "relative";
+            width: "5px",
+          },
+        }}
         rowsPerPageOptions={[5, 10, 20]}
+        getRowSpacing={(params) => ({
+          top: params.isFirstVisible ? 0 : 5,
+          bottom: params.isLastVisible ? 0 : 5,
+        })}
         checkboxSelection
         // onSelectionModelChange={(newSelection) => {
         //   console.log(newSelection[0]);

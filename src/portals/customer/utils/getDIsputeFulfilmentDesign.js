@@ -6,8 +6,7 @@ export const getDisputeFulfilmentDesign = (value) => {
       <div
         style={{
           background: "#D4FFD3",
-          color: "#05AE01",
-          width: "60%",
+          
         }}
         className={styles.fulfillment}
       >
@@ -20,8 +19,7 @@ export const getDisputeFulfilmentDesign = (value) => {
       <div
         style={{
           background: "#E9DAFF",
-          color: "#8D40FF",
-          width: "60%",
+          
         }}
         className={styles.fulfillment}
       >
@@ -34,8 +32,7 @@ export const getDisputeFulfilmentDesign = (value) => {
       <div
         style={{
           background: "#FEFFCF",
-          color: "#E0A816",
-          width: "60%",
+          
         }}
         className={styles.fulfillment}
       >
@@ -47,9 +44,8 @@ export const getDisputeFulfilmentDesign = (value) => {
     return (
       <div
         style={{
-          background: "#DDF1FF",
-          color: "#3366FF",
-          width: "60%",
+          background: "#DDF1FF"
+          
         }}
         className={styles.fulfillment}
       >
@@ -61,8 +57,7 @@ export const getDisputeFulfilmentDesign = (value) => {
       <div
         style={{
           background: "#F4F4F4",
-          color: "#939393",
-          width: "60%",
+          
         }}
         className={styles.fulfillment}
       >

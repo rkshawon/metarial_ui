@@ -11,11 +11,11 @@ export default function DisputeList() {
       <div className={styles.dispute_list}>
         <div className={styles.dispute_topbar}>
           <div>
-            <DisputeRequestModal />
+            <h4>Dispute List</h4>
             <h6>View & manage your Dispute Orders here</h6>
           </div>
           <div>
-            <Button variant="deepblue">New Sourcing Request</Button>
+            <DisputeRequestModal />
           </div>
         </div>
 

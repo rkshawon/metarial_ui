@@ -12,6 +12,8 @@ import {
   Select,
 } from "@mui/material";
 import { customSvg } from "../../../../../../utils/customSvg";
+import logo from "../../../../../../assets/img/usendlogo.png";
+import Countryicon from "./country.PNG";
 
 export default function ProductInfo() {
   const [count, setCount] = useState(1);
@@ -22,8 +24,8 @@ export default function ProductInfo() {
   };
 
   return (
-    <div>
-      <div className={styles.right_top}>
+    <div style={{ padding: "10px" }}>
+      <div>
         <h3
           className={styles.product_info_title}
           style={{ marginBottom: "20px" }}
@@ -36,16 +38,17 @@ export default function ProductInfo() {
             <h5 className={styles.supplier_title}>Supplier:</h5>
           </Grid>
           <Grid item sm={8}>
-            <h5 className={styles.supplier_title}>
+            <h5
+              className={styles.supplier_title}
+              style={{ display: "flex", alignItems: "center" }}
+            >
               <span style={{ color: "#000" }}>U-SEND Fulfillment </span>
-            </h5>
-          </Grid>
-          <Grid item sm={4}>
-            <h5 className={styles.supplier_title}>Price:</h5>
-          </Grid>
-          <Grid item sm={8}>
-            <h5 className={styles.supplier_title}>
-              <span style={{ color: "#000" }}>$45.00</span>
+
+              <img
+                src={logo}
+                alt=""
+                style={{ height: "20px", width: "20px" }}
+              />
             </h5>
           </Grid>
           <Grid item sm={4}>
@@ -57,21 +60,36 @@ export default function ProductInfo() {
             </h5>
           </Grid>
           <Grid item sm={4}>
+            <h5 className={styles.supplier_title}>Product Price:</h5>
+          </Grid>
+          <Grid item sm={8}>
+            <h5 className={styles.supplier_title}>
+              <span style={{ color: "#000" }}>$45.00</span>
+            </h5>
+          </Grid>
+          {/* <Grid item sm={4}>
             <h5 className={styles.supplier_title}>Processing Time:</h5>
           </Grid>
           <Grid item sm={8}>
             <h5 className={styles.supplier_title}>
               <span style={{ color: "#000" }}>2-4 Days</span>
             </h5>
-          </Grid>
+          </Grid> */}
           <Grid item sm={4}>
             <h5 className={styles.supplier_title}>Shipping:</h5>
           </Grid>
           <Grid item sm={8}>
-            <h5 className={styles.supplier_title}>
-              <span style={{ color: "#000" }}>
-                USD4.52 to United States via JT Priority
-              </span>
+            <h5
+              className={styles.supplier_title}
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <img
+                src={Countryicon}
+                alt=""
+                style={{ height: "15px", width: "20px", marginRight: "5px" }}
+              />
+
+              <span style={{ color: "#000" }}>$4.52 via U-Send Priority</span>
             </h5>
           </Grid>
           <Grid item sm={4}>
@@ -79,53 +97,58 @@ export default function ProductInfo() {
           </Grid>
           <Grid item sm={8}>
             <h5 className={styles.supplier_title}>
-              <span style={{ color: "#000" }}>10.25 pm</span>
+              <span style={{ color: "#000" }}>6-10 days</span>
             </h5>
           </Grid>
-          <Grid item sm={4}>
-            <h5
-              className={styles.supplier_title}
-              style={{ fontWeight: "700", color: "black" }}
-            >
-              Total Dropshipping cost:
-            </h5>
-          </Grid>
-          <Grid item sm={8}>
-            <h5 className={styles.supplier_title}>
-              <span style={{ fontWeight: "700", color: "black" }}>$15.68</span>
-            </h5>
-          </Grid>
-          <FormControl
-            style={{
-              marginLeft: "20px",
-              marginTop: "25px",
-              minWidth: "100px",
-            }}
-          >
-            <InputLabel id="Select" sx={{ color: "gray" }}>
-              Select
-            </InputLabel>
-            <Select
-              labelId="Select"
-              id="demo-select-small"
-              sx={{
-                width: "100%",
-                color: "gray",
-                fontSize: "14px",
+          <div className="flexbox" style={{ width: "100%" }}>
+            <FormControl
+              style={{
+                margin: "25px 20px",
+
+                minWidth: "100px",
               }}
-              size="small"
-              value={color}
-              label="Select"
-              onChange={handleChange}
-              // sx={{ "& .MuiSelect-icon": { top: 10 } }}
-              IconComponent={customSvg}
             >
-              <MenuItem value={0}>2</MenuItem>
-              <MenuItem value={10}>3</MenuItem>
-              <MenuItem value={20}>4</MenuItem>
-              <MenuItem value={30}>5</MenuItem>
-            </Select>
-          </FormControl>
+              <InputLabel id="Select" sx={{ color: "gray" }}>
+                Select
+              </InputLabel>
+              <Select
+                labelId="Select"
+                id="demo-select-small"
+                sx={{
+                  width: "100%",
+                  color: "gray",
+                  fontSize: "14px",
+                }}
+                size="small"
+                value={color}
+                label="Select"
+                onChange={handleChange}
+                // sx={{ "& .MuiSelect-icon": { top: 10 } }}
+                IconComponent={customSvg}
+              >
+                <MenuItem value={0}>1</MenuItem>
+                <MenuItem value={10}>2</MenuItem>
+                <MenuItem value={20}>3</MenuItem>
+                <MenuItem value={30}>4</MenuItem>
+                <MenuItem value={40}>5</MenuItem>
+              </Select>
+            </FormControl>
+            <Grid item sm={12}>
+              <h5
+                className={styles.supplier_title}
+                style={{ fontWeight: "700", color: "black" }}
+              >
+                Total Dropshipping cost:
+              </h5>
+            </Grid>
+            <Grid item sm={10}>
+              <h5 className={styles.supplier_title}>
+                <span style={{ fontWeight: "700", color: "black" }}>
+                  $15.68
+                </span>
+              </h5>
+            </Grid>
+          </div>
         </Grid>
       </div>
       {/* <h3 className={styles.product_info_title}>Product Cost</h3>

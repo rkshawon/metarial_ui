@@ -9,85 +9,29 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import styles from "../../../styles/customerStyles.module.css";
-import { Checkbox } from "@mui/material";
-import { rows } from "../dummyData";
+import { Checkbox, Chip } from "@mui/material";
+// import { rows } from "../dummyData";
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
-import OrderExpandContent from "./OrderExpandContent";
 import InfoIcon from "@mui/icons-material/Info";
 import { useState } from "react";
-import OrderFulfilmentModal from "./OrderFulfilmentModal";
+import { disputeRows } from "../../dummyData";
+import DisputeExpandContent from "./DisputeExpandContent";
+import { getDisputeFulfilmentDesign } from "../../../../utils/getDIsputeFulfilmentDesign";
+import { getChipProps } from "../../../../utils/getChipProps";
+import styles from "../../../../styles/customerStyles.module.css";
 
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
   const [openPopMessage, setOpenPopMessage] = React.useState(false);
-  const shouldBold = open && { fontWeight: "500" };
+  const shouldBold = open && { fontWeight: "bold" };
 
-  function getOrderChipProps(value) {
-    if (value === "Shipped") {
-      return (
-        <div
-          onClick={() => setOpen(!open)}
-          style={{
-            background: "#D4FFD3",
-          }}
-          className={styles.fulfillment}
-        >
-          {value}
-        </div>
-      );
-    }
-    if (value === "Failed") {
-      return (
-        <div
-          onClick={() => setOpen(!open)}
-          style={{
-            background: "#FFCFCF",
-          }}
-          className={styles.fulfillment}
-        >
-          {value}
-        </div>
-      );
-    }
-    if (value === "Cancelled") {
-      return (
-        <div
-          onClick={() => setOpen(!open)}
-          style={{
-            background: "#d1cdcd",
-          }}
-          className={styles.fulfillment}
-        >
-          {value}
-        </div>
-      );
-    }
-    if (value === "Fulfilled") {
-      return <OrderFulfilmentModal />;
-    } else {
-      return (
-        <div
-          onClick={() => setOpen(!open)}
-          style={{
-            background: "#FEFFCF",
-          }}
-          className={styles.fulfillment}
-        >
-          {value}
-        </div>
-      );
-    }
-  }
   const popUpMessage = () => {
     setOpenPopMessage(true);
   };
   const popDownMessage = () => {
     setOpenPopMessage(false);
   };
-
-  const [isChecked, setIsChecked] = useState(false);
   return (
     <React.Fragment>
       <TableRow
@@ -98,21 +42,18 @@ function Row(props) {
             backgroundColor: "rgba(244,244,244,.5)",
           },
         }}
+        onClick={() => setOpen(!open)}
       >
-        <TableCell
-          onClick={() => setIsChecked(!isChecked)}
-          style={{ paddingLeft: 0, paddingRight:0}}
-        >
-          <IconButton aria-label="expand row" size="small">
-            <Checkbox checked={isChecked || open} />
+        <TableCell>
+          <IconButton
+            aria-label="expand row"
+            size="small"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <Checkbox checked={true} /> : <Checkbox checked={false} />}
           </IconButton>
         </TableCell>
-        <TableCell
-          sx={shouldBold}
-          onClick={() => setOpen(!open)}
-          align="center"
-          style={{ paddingLeft: 0, paddingRight:0 }}
-        >
+        <TableCell sx={shouldBold}>
           <span>{row.orderId}</span>
           <span
             style={{
@@ -147,47 +88,27 @@ function Row(props) {
             )}
           </span>
         </TableCell>
-        <TableCell
-          sx={shouldBold}
-          style={{ paddingLeft: 0, paddingRight:0}}
-          onClick={() => setOpen(!open)}
-          align="center"
-        >
+        <TableCell sx={shouldBold} style={{ border: "none" }} align="center">
           {row.date}
         </TableCell>
-        <TableCell
-          sx={shouldBold}
-          onClick={() => setOpen(!open)}
-          align="center"
-          style={{ paddingLeft: 0, paddingRight:0}}
-        >
+        <TableCell sx={shouldBold} align="center">
           {row.customer}
         </TableCell>
-        <TableCell
-          sx={shouldBold}
-          onClick={() => setOpen(!open)}
-          align="center"
-          style={{ paddingLeft: 0, paddingRight:0}}
-        >
+        <TableCell sx={shouldBold} align="center">
           € {row.cost}
         </TableCell>
-        <TableCell
-          sx={shouldBold}
-          onClick={() => setOpen(!open)}
-          align="center"
-          style={{ paddingLeft: 0, paddingRight:0 }}
-        >
+        <TableCell sx={shouldBold} align="center">
           € {row.shipping}
         </TableCell>
-        <TableCell sx={shouldBold} align="right" style={{ width: "15%" }}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-            }}
-          >
-            {getOrderChipProps(row.fulfillment)}
-          </div>
+        <TableCell sx={shouldBold} align="center">
+          {getDisputeFulfilmentDesign(row.dispute)}
+        </TableCell>
+        <TableCell sx={shouldBold} align="center">
+          <Chip
+            variant="outlined"
+            size="small"
+            {...getChipProps({ value: row.dispute_status })}
+          />
         </TableCell>
       </TableRow>
       <>
@@ -201,13 +122,8 @@ function Row(props) {
             }}
             colSpan={8}
           >
-            <Collapse
-              in={open}
-              timeout="auto"
-              unmountOnExit
-              style={{ padding: 0, margin: 0 }}
-            >
-              <OrderExpandContent row={row} />
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <DisputeExpandContent row={row} />
             </Collapse>
           </TableCell>
         </TableRow>
@@ -216,23 +132,23 @@ function Row(props) {
   );
 }
 
-export default function OrderTableCell() {
+export default function DisputeTableCellRemake() {
   const [orderBy, setOrderBy] = useState("ASC");
-  const [sortedData, setSortedData] = useState(rows);
+  const [sortedData, setSortedData] = useState(disputeRows);
   const [colName, setColName] = useState("");
 
   // sorting function for each table column
   const sorting = (col) => {
     setColName(col);
     if (orderBy === "ASC") {
-      const sorted = [...rows].sort((a, b) =>
+      const sorted = [...disputeRows].sort((a, b) =>
         a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
       );
       setSortedData(sorted);
       setOrderBy("DSC");
     }
     if (orderBy === "DSC") {
-      const sorted = [...rows].sort((a, b) =>
+      const sorted = [...disputeRows].sort((a, b) =>
         a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
       );
       setSortedData(sorted);
@@ -249,7 +165,6 @@ export default function OrderTableCell() {
     <TableContainer
       component={Paper}
       sx={{
-        marginBottom: "20px",
         padding: "1% ",
         width: "100%",
         boxShadow: "none",
@@ -260,15 +175,11 @@ export default function OrderTableCell() {
           <TableRow
             sx={{
               background: "#eeeeee",
+              borderRadius: "0px",
             }}
           >
             <TableCell></TableCell>
-            <TableCell
-              sx={tableHeadStyles}
-              onClick={() => sorting("orderId")}
-              align="center"
-              style={{ paddingLeft: 0, paddingRight:0}}
-            >
+            <TableCell sx={tableHeadStyles} onClick={() => sorting("orderId")}>
               <div className={styles.flex_center}>
                 <strong>Order ID</strong>
                 {colName === "orderId" && orderBy === "ASC" ? (
@@ -278,12 +189,7 @@ export default function OrderTableCell() {
                 )}
               </div>
             </TableCell>
-            <TableCell
-              align="center"
-              sx={tableHeadStyles}
-              onClick={() => sorting("date")}
-              style={{ paddingLeft: 0, paddingRight:0}}
-            >
+            <TableCell sx={tableHeadStyles} onClick={() => sorting("date")}>
               <div className={styles.flex_center}>
                 <strong>Date</strong>
                 {colName === "date" && orderBy === "ASC" ? (
@@ -294,14 +200,12 @@ export default function OrderTableCell() {
               </div>
             </TableCell>
             <TableCell
-              align="center"
+              align="left"
               sx={tableHeadStyles}
               onClick={() => sorting("customer")}
-              style={{ paddingLeft: 0, paddingRight:0}}
             >
               <div className={styles.flex_center}>
                 <strong>Customer</strong>
-
                 {colName === "customer" && orderBy === "ASC" ? (
                   <ArrowDownward className={styles.arrow_font} />
                 ) : (
@@ -309,12 +213,7 @@ export default function OrderTableCell() {
                 )}
               </div>
             </TableCell>
-            <TableCell
-              align="center"
-              sx={tableHeadStyles}
-              onClick={() => sorting("cost")}
-              style={{ paddingLeft: 0, paddingRight:0}}
-            >
+            <TableCell sx={tableHeadStyles} onClick={() => sorting("cost")}>
               <div className={styles.flex_center}>
                 <strong>Cost</strong>
                 {colName === "cost" && orderBy === "ASC" ? (
@@ -324,15 +223,9 @@ export default function OrderTableCell() {
                 )}
               </div>
             </TableCell>
-            <TableCell
-              align="center"
-              sx={tableHeadStyles}
-              onClick={() => sorting("shipping")}
-              style={{ paddingLeft: 0, paddingRight:0}}
-            >
+            <TableCell sx={tableHeadStyles} onClick={() => sorting("shipping")}>
               <div className={styles.flex_center}>
                 <strong>Shipping</strong>
-
                 {colName === "shipping" && orderBy === "ASC" ? (
                   <ArrowDownward className={styles.arrow_font} />
                 ) : (
@@ -340,18 +233,28 @@ export default function OrderTableCell() {
                 )}
               </div>
             </TableCell>
+            <TableCell sx={tableHeadStyles} onClick={() => sorting("dispute")}>
+              <div className={styles.flex_center}>
+                <strong>Dispute</strong>
+                {colName === "dispute" && orderBy === "ASC" ? (
+                  <ArrowDownward className={styles.arrow_font} />
+                ) : (
+                  <ArrowUpward className={styles.arrow_font} />
+                )}
+              </div>
+            </TableCell>
             <TableCell
-              align="right"
               sx={tableHeadStyles}
-              onClick={() => sorting("fulfillment")}
-              style={{ paddingLeft: 0}}
+              onClick={() => sorting("dispute_status")}
             >
-              <strong>Fulfillment</strong>
-              {colName === "fulfillment" && orderBy === "ASC" ? (
-                <ArrowDownward className={styles.arrow_font} />
-              ) : (
-                <ArrowUpward className={styles.arrow_font} />
-              )}
+              <div className={styles.flex_center}>
+                <strong>Dispute Status</strong>
+                {colName === "dispute_status" && orderBy === "ASC" ? (
+                  <ArrowDownward className={styles.arrow_font} />
+                ) : (
+                  <ArrowUpward className={styles.arrow_font} />
+                )}
+              </div>
             </TableCell>
           </TableRow>
         </TableHead>

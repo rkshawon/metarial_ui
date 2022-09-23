@@ -13,7 +13,7 @@ import {
   Select,
   TextareaAutosize,
 } from "@mui/material";
-import { Add } from "@mui/icons-material";
+import { Add, DeleteOutline } from "@mui/icons-material";
 import { chipColorDecisionMaker } from "../../../../utils/chipColorDecisionMaker";
 import ProductTabMenu from "./ProductTabMenu";
 import VariantsTabMenu from "./VariantsTabMenu";
@@ -141,7 +141,7 @@ export default function ImportListTabs({ data }) {
               style={{ position: "absolute", zIndex: 3, right: 20, top: -10 }}
             >
               <div className="flexbox">
-                <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
+                {/* <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
                   <Select
                     defaultValue={action}
                     onChange={handleChangeAction}
@@ -163,7 +163,8 @@ export default function ImportListTabs({ data }) {
                       <span style={{ fontSize: "12px" }}>Unshipped</span>
                     </MenuItem>
                   </Select>
-                </FormControl>
+                </FormControl> */}
+                <DeleteOutline sx={{marginRight:"20px", cursor:"pointer", color:"gray"}}/>
                 <Button
                   variant="deepblue"
                   sx={{ fontSize: "12px" }}
@@ -184,17 +185,6 @@ export default function ImportListTabs({ data }) {
         <ProductTabMenu data={data} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {/* <TextareaAutosize
-          style={{
-            width: "100%",
-            padding: "20px",
-            fontSize: "14px",
-            lineHeight: "24px",
-            outline: "none",
-            borderColor: "lightgray",
-          }}
-          minRows={6}
-        ></TextareaAutosize> */}
         <DescriptionTabMenu />
       </TabPanel>
       <TabPanel value={value} index={2}>

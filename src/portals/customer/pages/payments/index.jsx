@@ -21,37 +21,6 @@ export default function Payments() {
         {/* Payment transaction part  */}
         <Grid container spacing={1}>
           <Grid item xs={5}>
-            {
-              //            <div className={styles.transaction}>
-              //               <div className={styles.transaction_left}>
-              //                 <h5 className={styles.transaction_title}>Total Transaction</h5>
-              //                 <h2 className={styles.transaction_amount}>
-              //                   $8,926.<span className={styles.fraction}>56</span>
-              //                 </h2>
-              //                 <strong className={styles.comparison}>
-              //                   +11% than last week
-              //                 </strong>
-              //               </div>
-              //               <div className={styles.transaction_right}>
-              //                 <div>
-              //                   <div className="flex">
-              //                     <div className={styles.blue_background}></div>
-              //                     <div>
-              //                       <h6 className={styles.blue}>Pending</h6>
-              //                       <h5 className={styles.total_amount}>$1254.36</h5>
-              //                     </div>
-              //                   </div>
-              //                   <div className="flex">
-              //                     <div className={styles.violett_background}></div>
-              //                     <div>
-              //                       <h6 className={styles.violett}>In Drafts</h6>
-              //                       <h5 className={styles.total_amount}>$0.00</h5>
-              //                     </div>
-              //                   </div>
-              //                 </div>
-              //               </div>
-              //             </div>
-            }
             <div
               style={{
                 display: "flex",
@@ -129,7 +98,10 @@ export default function Payments() {
                 </h5>
               </div>
             </div>
-            <div className="flexbox">
+            <div
+              className="flexbox"
+              style={{ display: "flex", justifyContent: "space-around" }}
+            >
               <PaymentMethodModal />
               <Button
                 variant="lightblue"

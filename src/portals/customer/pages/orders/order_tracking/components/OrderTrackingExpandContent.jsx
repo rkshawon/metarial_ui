@@ -1,37 +1,16 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useEffect, useRef } from "react";
-import {
-  Box,
-  Button,
-  FormControl,
-  Grid,
-  MenuItem,
-  Select,
-} from "@mui/material";
-import styles from "../../../styles/customerStyles.module.css";
-import ShipmentMethodContent from "./ShipmentMethodContent";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import ModifiedSelectItem from "./ModifiedSelectItem";
-import OrderMapModal from "./OrderMapModal";
+import React from "react";
+import { Box, Button, Grid } from "@mui/material";
+import styles from "../../../../styles/customerStyles.module.css";
+import ModifiedSelectItem from "../../components/ModifiedSelectItem";
 
-export default function OrderExpandContent({ row }) {
-  // const [value, setValue] = React.useState("Select");
-  // const [open, setOpen] = React.useState(false);
-
-  // const itemChange = (event) => {
-  //   setOpen(!open);
-  // };
-  // const getValue = (v) => {
-  //   setValue(v);
-  // };
-
+export default function OrderTrackingExpandContent({ row }) {
   return (
     <div
       style={{
-        width: "100%",
-        padding: "10px 1.5%",
-        // margin: " 0 1%",
+        width: "95%",
+        padding: "10px 2%",
+        margin: " 0 1%",
         backgroundColor: "#fcfcfc",
         borderRadius: "5px",
       }}
@@ -97,10 +76,10 @@ export default function OrderExpandContent({ row }) {
                 <h6 style={{ margin: 0 }}>Supplier Variant</h6>
                 <h5>{row.variant}</h5>
               </div>
-              {/* <div className="flexbox">
+              <div className="flexbox">
                 <h6>Color</h6>
                 <h5>{row.color}</h5>
-              </div> */}
+              </div>
             </div>
           </Grid>
           <Grid item sm={3.5}>
@@ -109,17 +88,17 @@ export default function OrderExpandContent({ row }) {
                 <h6 style={{ margin: 0 }}>Purchase Number</h6>
                 <h5>{row.invoiceId}</h5>
               </div>
-              {/* <div className="flexbox">
+              <div className="flexbox">
                 <h6>Tracking Number</h6>
                 <h5>{row.productId}</h5>
-              </div> */}
+              </div>
             </div>
           </Grid>
           <Grid item sm={2.2} sx={{ display: "flex" }} justifyContent="right">
-            {/* <Button variant="deepbluemini" sx={{ marginRight: "5px" }}>
+            <Button variant="deepbluemini" sx={{ marginRight: "5px" }}>
               Tracking
-            </Button> */}
-            <OrderMapModal />
+            </Button>
+            <Button variant="deepbluemini">Mapping</Button>
           </Grid>
         </Grid>
       </Box>

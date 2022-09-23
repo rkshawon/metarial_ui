@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../../styles/customerStyles.module.css";
 import {
+  Box,
   Button,
   FormControl,
   Grid,
@@ -33,7 +34,7 @@ export default function Products() {
   };
   return (
     <AppLayout>
-      <div className={styles.bulk_purchase}>
+      <Box className={styles.bulk_purchase}>
         <div className={styles.bulk_topbar}>
           <div>
             <h4>Products</h4>
@@ -212,7 +213,7 @@ export default function Products() {
             />
           </Stack>
         </div>
-      </div>
+      </Box>
     </AppLayout>
   );
 }

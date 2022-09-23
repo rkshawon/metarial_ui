@@ -38,7 +38,7 @@ function AppLayout({ children }) {
             // flexDirection: "column",
             // alignItems: "center",
             width: "100%",
-            padding: "30px",
+            padding: "0px 30px",
             // maxWidth: "1250px",
           }}
         >

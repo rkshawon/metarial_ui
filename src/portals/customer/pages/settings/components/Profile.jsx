@@ -4,7 +4,7 @@ import UploadImage from "./UploadImage";
 
 export default function Profile() {
   return (
-    <div>
+    <div style={{marginTop:"20px"}}>
       <UploadImage />
       <ProfileInformation />
     </div>

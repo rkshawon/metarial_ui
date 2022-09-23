@@ -2,10 +2,8 @@ import styles from "../../../../styles/customerStyles.module.css";
 
 export default function ProductDescription() {
   return (
-    <div>
-      <h3 className={styles.product_info_title} style={{ margin: "20px 0px" }}>
-        Product Description
-      </h3>
+    <div style={{ padding: "10px" }}>
+      <h3 className={styles.product_info_title}>Product Description</h3>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eum
         facilis nostrum eos blanditiis illo repudiandae veniam, autem architecto

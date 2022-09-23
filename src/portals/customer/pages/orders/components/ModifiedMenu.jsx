@@ -37,7 +37,6 @@ export default function ModifiedMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <ModifiedMenuItem close={handleClose} itemName="Fulfill Orders" />
         <ModifiedMenuItem close={handleClose} itemName="Open Dispute" />
         <ModifiedMenuItem close={handleClose} itemName="Download Invoice" />
         <ModifiedMenuItem close={handleClose} itemName="Export Orders" />

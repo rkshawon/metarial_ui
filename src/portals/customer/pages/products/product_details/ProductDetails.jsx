@@ -14,6 +14,7 @@ import Box from "@mui/material/Box";
 import ProductDescription from "./components/ProductDescription";
 import ImportProductModal from "./components/ImportProductModal";
 import LiveMapProductModal from "../live_products/components/LiveMapProductModal";
+import SingleProduct from "./components/SingleProduct";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -59,101 +60,81 @@ export default function ProductDetails() {
   console.log(location);
   return (
     <AppLayout>
-      <div className={styles.products}>
-        <div onClick={() => navigate(-1)} style={{ marginBottom: "20px" }}>
-          <ArrowBackIcon
-            sx={{ fontSize: "22px", color: "#9d9d9d", cursor: "pointer" }}
-          />
-        </div>
-        <div>
-          <h4>Product Details</h4>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <h6 className={styles.profile_title} style={{ margin: "0px" }}>
-              Product -
-            </h6>
-            <h6 style={{ color: "#919EAB", marginLeft: "10px" }}>
-              Foundations Matte Flip Flop
-            </h6>
+      <div className={styles.products} style={{ padding: "0 5%" }}>
+        <div
+          style={{
+            borderRadius: "5px",
+            padding: "0 20px",
+            boxShadow:
+              "rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px",
+          }}
+        >
+          <div style={{ display: "flex" }}>
+            <div onClick={() => navigate(-1)}>
+              <ArrowBackIcon
+                sx={{
+                  fontSize: "22px",
+                  color: "#9d9d9d",
+                  cursor: "pointer",
+                  marginTop: "6px",
+                }}
+              />
+            </div>
+            <div style={{ margin: "0 0 0 20px" }}>
+              <h4>Product Details</h4>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <h6 className={styles.profile_title} style={{ margin: "0px" }}>
+                  Product -
+                </h6>
+                <h6 style={{ color: "#919EAB", marginLeft: "10px" }}>
+                  Foundations Matte Flip Flop
+                </h6>
+              </div>
+            </div>
           </div>
+          <Grid container spacing={4} sx={{ marginTop: "20px" }}>
+            <Grid item xs={4}>
+              <ProductImageGallery />
+            </Grid>
+            <Grid item xs={8}>
+              <Box sx={{ width: "100%" }}>
+                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                  <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="basic tabs example"
+                  >
+                    <Tab label="Product" {...a11yProps(0)} />
+                    <Tab label="Description" {...a11yProps(1)} />
+                  </Tabs>
+                </Box>
+                <TabPanel value={value} index={0}>
+                  <ProductInfo />
+                  {location !== "live-products" && (
+                    <Button
+                      variant="lightblue"
+                      sx={{
+                        width: "auto",
+                        borderRadius: "5px",
+                        marginTop: "0",
+                      }}
+                    >
+                      Add to Import List
+                    </Button>
+                  )}
+                  {location !== "live-products" ? (
+                    <ImportProductModal />
+                  ) : (
+                    <LiveMapProductModal />
+                  )}
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                  <ProductDescription />
+                </TabPanel>
+              </Box>
+            </Grid>
+          </Grid>
         </div>
-        <Grid container spacing={4} sx={{ marginTop: "20px" }}>
-          <Grid item xs={4}>
-            <ProductImageGallery />
-          </Grid>
-          <Grid item xs={8}>
-            <ProductInfo />
-            {location !== "live-products" && (
-              <Button
-                variant="lightblue"
-                sx={{ width: "auto", borderRadius: "5px" }}
-              >
-                Add to Import List
-              </Button>
-            )}
-            {location !== "live-products" ? (
-              <ImportProductModal />
-            ) : (
-              <LiveMapProductModal />
-            )}
-          </Grid>
-        </Grid>
-        {/* Product statistics */}
-        {/* <div style={{ margin: "30px 0px" }}>
-          <h3
-            className={styles.product_info_title}
-            style={{ margin: "20px 0px" }}
-          >
-            Product Statistics
-          </h3>
-          <Grid container spacing={4}>
-            <Grid item sm={4}>
-              <div>
-                <Rating name="read-only" value={4} readOnly />
-                <h5>4 / 5</h5>
-                <h6>3 reviews</h6>
-              </div>
-            </Grid>
-            <Grid item sm={4}>
-              <div>
-                <h5 style={{ fontSize: "16px" }}>Import to store</h5>
-                <h5>Corex shop</h5>
-                <p>This product has been added to Corex shop stores</p>
-              </div>
-            </Grid>
-            <Grid item sm={4}>
-              <div>
-                <h5 style={{ fontSize: "16px" }}>Orders</h5>
-                <h5>14</h5>
-                <p>
-                  This product has been ordered through Bestdealer and/or
-                  AliExpress 14 times in the past 30 days.
-                </p>
-              </div>
-            </Grid>
-          </Grid>
-        </div> */}
-        <Box sx={{ width: "100%", marginTop: "20px" }}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              aria-label="basic tabs example"
-            >
-              <Tab label="Description" {...a11yProps(0)} />
-              <Tab label="Variants" {...a11yProps(1)} />
-              <Tab label="Product" {...a11yProps(2)} />
-            </Tabs>
-          </Box>
-          <TabPanel value={value} index={0}>
-            <ProductDescription />
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            Item Two
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            Item Three
-          </TabPanel>
-        </Box>
       </div>
     </AppLayout>
   );

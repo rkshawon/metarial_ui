@@ -26,7 +26,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "60%",
-  height: "600px",
+  height: "50%",
   textAlign: "center",
   overflowY: "scroll",
   bgcolor: "background.paper",

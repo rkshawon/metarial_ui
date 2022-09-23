@@ -1,12 +1,13 @@
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import Autocomplete from '@mui/material/Autocomplete';
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import Stack from "@mui/material/Stack";
+import Autocomplete from "@mui/material/Autocomplete";
 
-export default function MapProductAutoComplete() {
+export default function MapProductAutoComplete({ getValue }) {
   return (
     <Stack sx={{ width: "100%" }}>
       <Autocomplete
+        onChange={(event, value) => getValue(value)}
         freeSolo
         id="free-solo-2-demo"
         disableClearable
@@ -16,10 +17,10 @@ export default function MapProductAutoComplete() {
             {...params}
             label="Search Product"
             size="small"
-            sx={{color:'gray'}}
+            sx={{ color: "gray" }}
             InputProps={{
               ...params.InputProps,
-              type: 'search',
+              type: "search",
             }}
           />
         )}
@@ -28,16 +29,16 @@ export default function MapProductAutoComplete() {
   );
 }
 const products = [
-    { title: "Product 1" },
-    { title: "Product 2" },
-    { title: "Product 3" },
-    { title: "Product 4" },
-    { title: "Product 5" },
-    { title: "Product 6" },
-    { title: "Product 7" },
-    {
-      title: "Product 8",
-    },
-    { title: "Product 9" },
-    { title: "Product 10" },
-  ];
+  { title: "Foundations Matte Flip Flop 1" },
+  { title: "Foundations Matte Flip Flop 2" },
+  { title: "Foundations Matte Flip Flop 3" },
+  { title: "Foundations Matte Flip Flop 4" },
+  { title: "Foundations Matte Flip Flop 5" },
+  { title: "Foundations Matte Flip Flop 6" },
+  { title: "Foundations Matte Flip Flop 7" },
+  {
+    title: "Foundations Matte Flip Flop 8",
+  },
+  { title: "Foundations Matte Flip Flop 9" },
+  { title: "Foundations Matte Flip Flop 10" },
+];

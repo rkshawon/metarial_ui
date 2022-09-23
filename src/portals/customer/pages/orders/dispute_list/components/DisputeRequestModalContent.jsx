@@ -15,6 +15,7 @@ import styles from "../../../../styles/customerStyles.module.css";
 import store from "../../../../assets/shopify.png";
 import { dummyOrders } from "../dummyData";
 import DisputeProofContent from "./DisputeProofContent";
+import ProductTags from "../../../products/import_list/components/ProductTags";
 
 export default function DisputeRequestModalContent({
   closeModal,
@@ -22,7 +23,14 @@ export default function DisputeRequestModalContent({
   setClose,
 }) {
   const [order, setOrder] = useState(" ");
+  const [issue, setIssue] = useState("");
+  const [outcome, setOutcome] = useState("");
 
+  const handleDisputeIssue = (e) => {
+    setIssue(e.target.value);
+  };
+
+  console.log(issue);
   function getOrderStatusProps(params) {
     if (params.status === "Delivered") {
       return (
@@ -63,6 +71,15 @@ export default function DisputeRequestModalContent({
       );
     }
   }
+
+  const Placeholder = ({ children }) => {
+    return (
+      <span style={{ color: "lightgray", fontSize: "14px", textAlign: "left" }}>
+        {children}
+      </span>
+    );
+  };
+
   return (
     <div>
       {!isClose && (
@@ -110,59 +127,77 @@ export default function DisputeRequestModalContent({
               Dispute Issue
             </InputLabel>
             <FormControl fullWidth>
-              <InputLabel
-                id="dispute-issue"
-                sx={{ margin: 0, textAlign: "left", color: "lightgray" }}
-              >
-                Choose your dispute issue
-              </InputLabel>
               <Select
-                labelId="dispute-issue"
-                id="demo-select-small"
+                displayEmpty
                 sx={{
                   margin: "10px 0",
                   width: "100%",
                   height: "38px",
+                  textAlign: "left",
                 }}
-                //   value={age}
-                //   onChange={handleChange}
+                renderValue={
+                  issue !== ""
+                    ? undefined
+                    : () => <Placeholder>Choose disute issue</Placeholder>
+                }
+                value={issue}
+                onChange={handleDisputeIssue}
               >
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                <MenuItem value="Damaged/wrong product">
+                  Damaged/wrong product
+                </MenuItem>
+                <MenuItem value="Proof document">Proof document </MenuItem>
+                <MenuItem value="Lost tracking">Lost tracking</MenuItem>
               </Select>
             </FormControl>
 
             <InputLabel sx={{ margin: 0, textAlign: "left", color: "#000" }}>
               Dispute Outcome
             </InputLabel>
-            <FormControl fullWidth>
-              <InputLabel id="dispute-outcome" sx={{ color: "lightgray" }}>
-                Choose your dispute outcome
-              </InputLabel>
-              <Select
-                labelId="dispute-outcome"
-                id="demo-select-small"
-                sx={{
-                  margin: "10px 0",
-                  width: "100%",
-                  height: "38px",
-                }}
-                //   value={age}
-                // label="Choose your dispute issue"
-                //   onChange={handleChange}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
+            {issue !== "Proof document" && (
+              <FormControl fullWidth>
+                <Select
+                  displayEmpty
+                  sx={{
+                    margin: "10px 0",
+                    width: "100%",
+                    height: "38px",
+                    textAlign: "left",
+                  }}
+                  renderValue={
+                    outcome !== ""
+                      ? undefined
+                      : () => <Placeholder>Choose disute outcome</Placeholder>
+                  }
+                  value={outcome}
+                  // label="Choose your dispute issue"
+                  onChange={(e) => setOutcome(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  {issue !== "Proof document" && (
+                    <>
+                      <MenuItem value="Resend">Resend</MenuItem>
+                      <MenuItem value="Refund">Refund</MenuItem>
+                    </>
+                  )}
+                </Select>
+              </FormControl>
+            )}
+            {issue === "Proof document" && (
+              <ProductTags
+                names={[
+                  "Proof of delivery",
+                  "Proof of shipping",
+                  "Waybill",
+                  "Local Tracking",
+                ]}
+              />
+            )}
             <div style={{ position: "relative" }}>
               <InputLabel sx={{ margin: 0, textAlign: "left", color: "#000" }}>
                 Upload Attachments

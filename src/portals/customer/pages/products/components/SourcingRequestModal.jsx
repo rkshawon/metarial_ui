@@ -17,6 +17,7 @@ import {
 import UploadImage from "./UploadImage";
 import CustomMultipleSelect from "./CustomMultipleSelect";
 import { customSvg } from "../../../../../utils/customSvg";
+import CustomizedHook from "./CustomizedHook";
 
 const style = {
   position: "absolute",
@@ -135,7 +136,8 @@ export default function SourcingRequestModal() {
                 >
                   Select shipping countries here
                 </InputLabel>
-                <CustomMultipleSelect />
+                <CustomizedHook />
+                {/* <CustomMultipleSelect /> */}
               </Grid>
             </Grid>
             <Grid container spacing={4}>

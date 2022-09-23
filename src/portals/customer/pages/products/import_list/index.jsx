@@ -12,7 +12,7 @@ import { Add } from "@mui/icons-material";
 export default function ImportList() {
   return (
     <AppLayout>
-      <div className={styles.bulk_purchase}>
+      <div className={styles.bulk_purchase} >
         <div className={styles.bulk_topbar}>
           <div>
             <h4>Product Import List</h4>

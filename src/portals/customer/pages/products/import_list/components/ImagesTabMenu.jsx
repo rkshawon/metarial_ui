@@ -4,13 +4,14 @@ import ImageListItem from "@mui/material/ImageListItem";
 import DoneIcon from "@mui/icons-material/Done";
 
 export default function ImagesTabMenu() {
-  const [imageList, setImagelist] = React.useState([]);
+  const [imageList, setImagelist] = React.useState([1]);
 
-  const selectImage = (item) => {
-    if (!imageList.includes(item)) {
-      setImagelist([...imageList, item]);
+
+  const selectImage = (id) => {
+    if (!imageList.includes(id)) {
+      setImagelist([...imageList, id]);
     } else {
-      const index = imageList.indexOf(item);
+      const index = imageList.indexOf(id);
       if (index > -1) {
         imageList.splice(index, 1);
         setImagelist([...imageList]);
@@ -18,20 +19,21 @@ export default function ImagesTabMenu() {
     }
   };
   return (
-    <ImageList sx={{ width: "100%", height: "auto" }} cols={6}>
+    <ImageList sx={{ width: "100%", height: "auto", marginTop:"20px" }} cols={6}>
+      
       {itemData.map((item) => (
         <ImageListItem
           key={item.img}
-          onClick={() => selectImage(item)}
+          onClick={() => selectImage(item.id)}
           sx={{
             position: "relative",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: imageList.includes(item) && "black",
+            backgroundColor: imageList.includes(item.id) && "black",
           }}
         >
-          {imageList.includes(item) && (
+          {imageList.includes(item.id) && (
             <DoneIcon
               sx={{
                 color: "#fff",
@@ -46,7 +48,7 @@ export default function ImagesTabMenu() {
             srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
             alt={item.title}
             loading="lazy"
-            style={{ opacity: imageList.includes(item) && ".5" }}
+            style={{ opacity: imageList.includes(item.id) && ".5" }}
           />
         </ImageListItem>
       ))}

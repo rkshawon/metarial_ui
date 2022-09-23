@@ -1,15 +1,4 @@
-import {
-  Autocomplete,
-  Backdrop,
-  Box,
-  Button,
-  Divider,
-  Fade,
-  Grid,
-  InputAdornment,
-  Modal,
-  TextField,
-} from "@mui/material";
+import { Backdrop, Box, Button, Fade, Modal } from "@mui/material";
 import { useState } from "react";
 import styles from "../../../../styles/customerStyles.module.css";
 import img from "../../../../assets/3.png";
@@ -134,7 +123,7 @@ function a11yProps(index) {
   };
 }
 
-export default function LiveMapProductModal() {
+export default function LiveMapProductModalRemake() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -146,13 +135,6 @@ export default function LiveMapProductModal() {
 
   return (
     <>
-      {/* <Button
-        onClick={handleOpen}
-        variant="purple_outlined"
-        sx={{ width: "auto", borderRadius: "5px", marginLeft: "15px" }}
-      >
-        Map Product
-      </Button> */}
       <Button onClick={handleOpen} variant="deepbluemini">
         Map
       </Button>
@@ -203,7 +185,7 @@ export default function LiveMapProductModal() {
                         fontWeight: value === 1 && "700",
                       }}
                     >
-                      Bundle (2)
+                      Bundle
                     </div>
                   }
                   {...a11yProps(1)}
@@ -215,9 +197,6 @@ export default function LiveMapProductModal() {
             </TabPanel>
             <TabPanel value={value} index={1}>
               <MapLiveProduct />
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              something
             </TabPanel>
             <div
               style={{

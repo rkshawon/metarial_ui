@@ -2,6 +2,7 @@ import { Close } from "@mui/icons-material";
 import {
   Button,
   Divider,
+  FormControlLabel,
   Grid,
   List,
   ListItem,
@@ -46,7 +47,13 @@ export default function Billing() {
                 >
                   <>
                     <div style={{ marginRight: "10px" }}>
-                      <ModifiedSwitch />
+                      <FormControlLabel
+                        control={
+                          <div style={{ marginRight: "10px" }}>
+                            <ModifiedSwitch />
+                          </div>
+                        }
+                      />
                     </div>
                     <ListItemAvatar>
                       <img src={payment.img} alt="store" />

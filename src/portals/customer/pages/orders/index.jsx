@@ -13,7 +13,7 @@ export default function Orders() {
       <div className={styles.orders}>
         <div className={styles.orders_topbar}>
           <div>
-            <OrderFulfilmentModal />
+            <h4>Orders</h4>
             <h6>Manage your orders here</h6>
           </div>
         </div>

@@ -13,10 +13,10 @@ export default function SelectedOrders() {
           alt="product"
           style={{ width: "111px", height: "109px", marginRight: 10 }}
         />
-        <div style={{width:"100%"}}>
+        <div style={{ width: "100%" }}>
           <div className={styles.selected_right_contents}>
-            <h5 style={{color:"#3366FF"}}>Foundation Flip Flop</h5>
-            <h5 style={{color:"#3366FF"}}>$6.49</h5>
+            <h5 style={{ color: "#3366FF" }}>Foundation Flip Flop</h5>
+            <h5 style={{ color: "#3366FF" }}>$6.49</h5>
           </div>
           <Divider />
           <div className={styles.selected_right_contents}>
@@ -28,9 +28,7 @@ export default function SelectedOrders() {
             <h5>INVSD750073X</h5>
           </div>
           <Divider />
-          <div className={styles.pricing_tag}>
-          Yun Express    $8.49
-          </div>
+          <div className={styles.pricing_tag}>Yun Express $8.49</div>
         </div>
       </div>
     </>

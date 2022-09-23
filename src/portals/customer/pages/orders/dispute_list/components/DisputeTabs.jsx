@@ -4,24 +4,22 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Home, Search } from "@mui/icons-material";
+import { Search } from "@mui/icons-material";
 import {
-  Chip,
+  Grid,
   InputAdornment,
-  InputLabel,
-  MenuItem,
   Pagination,
   PaginationItem,
   Stack,
   TextField,
 } from "@mui/material";
-import DisputeDataTable from "./DisputeDataTable";
 import { chipColorDecisionMaker } from "../../../../utils/chipColorDecisionMaker";
-import DisputeTableCell from "./DisputeTableCell";
 import styles from "../../../../styles/customerStyles.module.css";
 import ModifiedMenu from "../../components/ModifiedMenu";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import DisputeTableCellRemake from "./DisputeTableCellRemake";
+import DatePicker from "../../components/DatePicker";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -64,7 +62,15 @@ export default function DisputeTabs() {
   };
 
   return (
-    <Box sx={{ width: "100%", marginTop: "30px" }}>
+    <Box
+      sx={{
+        paddingBottom: "20px",
+        width: "100%",
+        marginTop: "30px",
+        boxShadow:
+          " 0px 2px 2px rgb(145 158 171 / 20%), 0px 12px 24px -4px rgb(145 158 171 / 12%)",
+      }}
+    >
       <Box>
         <Tabs
           value={value}
@@ -138,33 +144,42 @@ export default function DisputeTabs() {
             ></div>
           </>
         </Tabs>
-        {/* <div className={styles.order_filter_right_tab}>
-          <ul>
-            <li>Fulfill Orders</li>
-            <li>Open Dispute</li>
-            <li>Download Invoice</li>
-            <li>Export Orders</li>
-          </ul>
-        </div> */}
       </Box>
       <TabPanel value={value} index={0}>
-        <div>
-          <TextField
-            sx={{ width: "100%" }}
-            size="small"
-            // sx={{ marginBottom: "10px" }}
-            placeholder="Search products"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              ),
-            }}
-          />
-        </div>
-        {/* <OrderDataTable /> */}
-        <DisputeTableCell />
+        <Grid container sx={{ padding: " 0px 15px", marginTop: "15px" }}>
+          <Grid item xs={6.6}>
+            <TextField
+              size="small"
+              sx={{ width: "100%" }}
+              placeholder="Search Dispute"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Grid>
+          <Grid item xs={5.4}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <h6
+                style={{
+                  marginLeft: "40px",
+                  width: "150px",
+                  textAlign: "right",
+                }}
+              >
+                Search By
+              </h6>
+              <div style={{ margin: "0px 20px" }}>
+                <DatePicker title="Start Date" />
+              </div>
+              <DatePicker title="End Date" />
+            </div>
+          </Grid>
+        </Grid>
+        <DisputeTableCellRemake />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two

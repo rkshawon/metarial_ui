@@ -1,4 +1,4 @@
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import { Apps, ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Icon } from "@iconify/react";
 import { FiClipboard } from "react-icons/fi";
 import FlipToFrontIcon from "@mui/icons-material/FlipToFront";
@@ -136,7 +136,7 @@ export const SidebarItems = [
         text: "Extra storage",
         route: "storage",
         link: "/customer/extra/storage",
-        icon: <FlipToFrontIcon width="20px" height="20px" />,
+        icon: <Apps width="20px" height="20px" />,
         nestedItem: null,
       },
     ],

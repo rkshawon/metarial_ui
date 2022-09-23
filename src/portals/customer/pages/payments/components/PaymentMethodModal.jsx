@@ -12,6 +12,7 @@ import method1 from "../../../assets/pmethod2.png";
 import method2 from "../../../assets/paypal.png";
 import method3 from "../../../assets/pmethod.png";
 import InputField from "../../../../../Authentication/components/InputField";
+import { useLocation } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -19,7 +20,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "50%",
-  height: "600px",
+  height: "auto",
   overflowY: "scroll",
   textAlign: "center",
   bgcolor: "background.paper",
@@ -27,26 +28,45 @@ const style = {
   boxShadow: 24,
   //   backgroundColor:"none",
   //   p: 16,
-  padding: "0 150px",
+  padding: "20px 150px",
 };
 
-export default function PaymentMethodModal() {
+export default function PaymentMethodModal({ value }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const location = useLocation().pathname;
+
   return (
     <>
-      <Button
-        variant="purple"
-        sx={{
-          borderRadius: "5px",
-          width: "200px",
-          height: "38px",
-        }}
-        onClick={handleOpen}
-      >
-        Add New Card
-      </Button>
+      {!value ? (
+        <Button
+          variant="purple"
+          sx={{
+            borderRadius: "5px",
+            width: "200px",
+            height: "38px",
+          }}
+          onClick={handleOpen}
+        >
+          Add New Card
+        </Button>
+      ) : (
+        <Button
+          variant="deepbluemini"
+          onClick={handleOpen}
+          sx={{
+            background: "#8D40FF",
+            color: "#fff",
+            ":hover": {
+              background: "8D40FF",
+            },
+            boxShadow: "none",
+          }}
+        >
+          Fulfill Order
+        </Button>
+      )}
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -98,11 +118,13 @@ export default function PaymentMethodModal() {
                 Please fill up the following details
               </h6>
               <InputField
+                size="small"
                 label="Card Holder Name"
                 placeholder="enter card holder name"
                 type="text"
               />
               <InputField
+                size="small"
                 label="Card Number *"
                 placeholder="0000 0000 0000 0000"
                 type="text"
@@ -111,7 +133,7 @@ export default function PaymentMethodModal() {
               <Grid container spacing={2}>
                 <Grid item sm={6}>
                   <InputField
-                    label="Expiry Date *"
+                    size="small"
                     placeholder="MM / YY"
                     type="date"
                     startAdornment={<CalendarTodayIcon />}
@@ -119,6 +141,7 @@ export default function PaymentMethodModal() {
                 </Grid>
                 <Grid item sm={6}>
                   <InputField
+                    size="small"
                     label="CVC / CVV *"
                     placeholder="..."
                     type="text"

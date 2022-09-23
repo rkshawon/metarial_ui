@@ -11,78 +11,14 @@ import {
   TextField,
 } from "@mui/material";
 import { useState } from "react";
-import styles from "../../../../styles/customerStyles.module.css";
-import img from "../../../../assets/3.png";
+import styles from "../../../styles/customerStyles.module.css";
 
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
-import MapLiveProduct from "./MapLiveProduct";
-import MapLiveSingleProduct from "./MapLiveSingleProduct";
-
-const products = [
-  { title: "Product 1" },
-  { title: "Product 2" },
-  { title: "Product 3" },
-  { title: "Product 4" },
-  { title: "Product 5" },
-  { title: "Product 6" },
-  { title: "Product 7" },
-  {
-    title: "Product 8",
-  },
-  { title: "Product 9" },
-  { title: "Product 10" },
-];
-
-const dummyProduct = [
-  {
-    img: img,
-    color: "red",
-    id: "64200_RB5I5",
-  },
-  {
-    img: img,
-    color: "Green",
-    id: "64200_IOGJI5",
-  },
-  {
-    img: img,
-    color: "Blue",
-    id: "64200_IXtJI5",
-  },
-  {
-    img: img,
-    color: "red",
-    id: "64200_OGJI5",
-  },
-  {
-    img: img,
-    color: "red",
-    id: "64200_OGJI5",
-  },
-  {
-    img: img,
-    color: "red",
-    id: "64200_OGJI5",
-  },
-  {
-    img: img,
-    color: "red",
-    id: "64200_OGJI5",
-  },
-  {
-    img: img,
-    color: "red",
-    id: "64200_OGJI5",
-  },
-  {
-    img: img,
-    color: "red",
-    id: "64200_OGJI5",
-  },
-];
+import MapLiveSingleProduct from "../../products/live_products/components/MapLiveSingleProduct";
+import MapLiveProduct from "../../products/live_products/components/MapLiveProduct";
 
 const style = {
   position: "absolute",
@@ -134,7 +70,7 @@ function a11yProps(index) {
   };
 }
 
-export default function LiveMapProductModal() {
+export default function OrderMapModal() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -147,12 +83,12 @@ export default function LiveMapProductModal() {
   return (
     <>
       {/* <Button
-        onClick={handleOpen}
-        variant="purple_outlined"
-        sx={{ width: "auto", borderRadius: "5px", marginLeft: "15px" }}
-      >
-        Map Product
-      </Button> */}
+          onClick={handleOpen}
+          variant="purple_outlined"
+          sx={{ width: "auto", borderRadius: "5px", marginLeft: "15px" }}
+        >
+          Map Product
+        </Button> */}
       <Button onClick={handleOpen} variant="deepbluemini">
         Map
       </Button>
@@ -203,7 +139,7 @@ export default function LiveMapProductModal() {
                         fontWeight: value === 1 && "700",
                       }}
                     >
-                      Bundle (2)
+                      Bundle
                     </div>
                   }
                   {...a11yProps(1)}
@@ -215,9 +151,6 @@ export default function LiveMapProductModal() {
             </TabPanel>
             <TabPanel value={value} index={1}>
               <MapLiveProduct />
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              something
             </TabPanel>
             <div
               style={{

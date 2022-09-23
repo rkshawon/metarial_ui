@@ -6,7 +6,6 @@ export const getStatusDesignMaker = (params) => {
       <div
         style={{
           background: "#D4FFD3",
-          color: "#05AE01",
         }}
         className={styles.fulfillment}
       >
@@ -19,7 +18,6 @@ export const getStatusDesignMaker = (params) => {
       <div
         style={{
           background: "#E9DAFF",
-          color: "#8D40FF",
         }}
         className={styles.fulfillment}
       >
@@ -31,7 +29,6 @@ export const getStatusDesignMaker = (params) => {
       <div
         style={{
           background: "#FEFFCF",
-          color: "#E0A816",
         }}
         className={styles.fulfillment}
       >

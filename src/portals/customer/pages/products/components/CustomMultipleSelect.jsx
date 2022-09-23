@@ -1,3 +1,4 @@
+//Currently not using
 import * as React from "react";
 import PropTypes from "prop-types";
 import { useAutocomplete } from "@mui/base/AutocompleteUnstyled";
@@ -5,6 +6,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import { styled } from "@mui/material/styles";
 import { autocompleteClasses } from "@mui/material/Autocomplete";
+import { countries } from "./dummyCountry";
 
 const Root = styled("div")(
   ({ theme }) => `
@@ -15,16 +17,22 @@ const Root = styled("div")(
 `
 );
 
+const Label = styled("label")`
+  padding: 0 0 4px;
+  line-height: 1.5;
+  display: block;
+`;
+
 const InputWrapper = styled("div")(
   ({ theme }) => `
-  width: "100%";
+  width: 300px;
   border: 1px solid ${theme.palette.mode === "dark" ? "#434343" : "#d9d9d9"};
   background-color: ${theme.palette.mode === "dark" ? "#141414" : "#fff"};
   border-radius: 4px;
   padding: 1px;
   display: flex;
   flex-wrap: wrap;
-height:"50px";
+
   &:hover {
     border-color: ${theme.palette.mode === "dark" ? "#177ddc" : "#40a9ff"};
   }
@@ -41,7 +49,7 @@ height:"50px";
         ? "rgba(255,255,255,0.65)"
         : "rgba(0,0,0,.85)"
     };
-    height: 40px;
+    height: 30px;
     box-sizing: border-box;
     padding: 4px 6px;
     width: 0;
@@ -107,7 +115,7 @@ const StyledTag = styled(Tag)(
 
 const Listbox = styled("ul")(
   ({ theme }) => `
-  width: "100%";
+  width: 300px;
   margin: 2px 0 0;
   padding: 0;
   position: absolute;
@@ -155,6 +163,7 @@ const Listbox = styled("ul")(
 export default function CustomMultipleSelect() {
   const {
     getRootProps,
+    getInputLabelProps,
     getInputProps,
     getTagProps,
     getListboxProps,
@@ -165,22 +174,26 @@ export default function CustomMultipleSelect() {
     setAnchorEl,
   } = useAutocomplete({
     id: "customized-hook-demo",
-    defaultValue: [countries[0]],
+    defaultValue: [top100Films[1]],
     multiple: true,
-    options: countries,
-    getOptionLabel: (option) => option,
+    options: top100Films,
+    getOptionLabel: (option) => option.title,
   });
+
   return (
     <Root>
       <div {...getRootProps()}>
-        <InputWrapper
+        <Label
+          {...getInputLabelProps()}
           sx={{
-            maxHeight: " 80px",
-            overflowY: "scroll",
+            margin: "0 0 10px 0",
+            textAlign: "left",
+            color: "#000",
           }}
-          ref={setAnchorEl}
-          className={focused ? "focused" : ""}
         >
+          Select shipping countries here
+        </Label>
+        <InputWrapper ref={setAnchorEl} className={focused ? "focused" : ""}>
           {value.map((option, index) => (
             <StyledTag label={option} {...getTagProps({ index })} />
           ))}
@@ -192,7 +205,7 @@ export default function CustomMultipleSelect() {
         <Listbox {...getListboxProps()}>
           {groupedOptions.map((option, index) => (
             <li {...getOptionProps({ option, index })}>
-              <span>{option}</span>
+              <span>{option.title}</span>
               <CheckIcon fontSize="small" />
             </li>
           ))}
@@ -202,7 +215,7 @@ export default function CustomMultipleSelect() {
   );
 }
 
-export const countries = [
+export const top100Films = [
   "Afghanistan",
   "Åland Islands",
   "Albania",

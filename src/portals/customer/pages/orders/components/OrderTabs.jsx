@@ -5,39 +5,26 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import styles from "../../../styles/customerStyles.module.css";
-import OrderDataTable from "./OrderDataTable";
 import {
-  Autocomplete,
-  Checkbox,
-  FormControl,
   FormControlLabel,
+  Grid,
   InputAdornment,
-  InputLabel,
-  ListItemText,
   Pagination,
   PaginationItem,
-  Select,
   Stack,
-  Switch,
   TextField,
 } from "@mui/material";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { dummyOrders } from "../dispute_list/dummyData";
 import {
-  ArrowDownward,
-  KeyboardArrowUp,
-  Padding,
   Search,
-  SearchOutlined,
 } from "@mui/icons-material";
 import OrderTableCell from "./OrderTableCell";
 import { chipColorDecisionMaker } from "../../../utils/chipColorDecisionMaker";
-import { customSvg } from "../../../../../utils/customSvg";
 import DatePicker from "./DatePicker";
 import ModifiedMenu from "./ModifiedMenu";
 import ModifiedSwitch from "../../../../../components/ModifiedSwitch.jsx";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import OrderFulfilmentModal from "./OrderFulfilmentModal";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -74,30 +61,31 @@ function a11yProps(index) {
 
 export default function OrderTabs() {
   const [value, setValue] = React.useState(0);
-  const [open, setOpen] = React.useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const [personName, setPersonName] = React.useState([]);
-
-  const handleChange2 = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
-
   return (
-    <Box sx={{ width: "100%", marginTop: "30px" }}>
-      <Box sx={{}}>
+    <Box
+      sx={{
+        paddingBottom: "20px",
+        width: "100%",
+        marginTop: "30px",
+        boxShadow:
+          " 0px 2px 2px rgb(145 158 171 / 20%), 0px 12px 24px -4px rgb(145 158 171 / 12%)",
+      }}
+    >
+      <Box>
         <Tabs
           value={value}
-          sx={{ position: "relative", zIndex: 1 }}
+          sx={{
+            position: "relative",
+            zIndex: 1,
+            "& .Mui-Selected": {
+              color: "red",
+            },
+          }}
           onChange={handleChange}
           aria-label="basic tabs example"
           inkBarStyle={{ backgroundColor: "#000" }}
@@ -173,60 +161,85 @@ export default function OrderTabs() {
             {...a11yProps(2)}
           />
           <>
+            {/* <div style={{ position: "absolute", zIndex: 3, right: 20 }}> */}
             <div
-              style={{ position: "absolute", zIndex: 3, right: 20, top: 12 }}
+              className="flexbox"
+              style={{
+                position: "absolute",
+                right: 20,
+                top: "50%",
+                transform: "translate(0%, -50%)",
+              }}
             >
-              <div className="flexbox">
-                <span
-                  className={styles.cost_title}
-                  style={{
-                    color: "rgba(140, 140, 140, 0.85)",
-                    marginRight: "10px",
-                  }}
-                >
-                  Auto Fulfilment
-                </span>
-                <ModifiedSwitch />
-                <ModifiedMenu />
-              </div>
+              <span
+                className={styles.cost_title}
+                style={{
+                  color: "rgba(140, 140, 140, 0.85)",
+                  margin: "0 10px 0 20px",
+                }}
+              >
+                Auto Fulfilment
+              </span>
+              <FormControlLabel
+                control={
+                  <div style={{ marginRight: "10px" }}>
+                    <ModifiedSwitch />
+                  </div>
+                }
+              />
+              <ModifiedMenu />
             </div>
-            <div
-              className={styles.order_filter_right_tab}
-              style={{ position: "absolute", zIndex: 3, right: 20, top: 50 }}
-            ></div>
           </>
         </Tabs>
-        {/* <div className={styles.order_filter_right_tab}>
-          <ul>
-            <li>Fulfill Orders</li>
-            <li>Open Dispute</li>
-            <li>Download Invoice</li>
-            <li>Export Orders</li>
-          </ul>
-        </div> */}
       </Box>
       <TabPanel value={value} index={0}>
-        <div className="flexbox">
-          <TextField
-            size="small"
-            // sx={{ marginBottom: "10px" }}
-            placeholder="Search products"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <div className="flexbox">
-            <h6>Search By</h6>
-            <div style={{ margin: "0px 20px" }}>
-              <DatePicker title="Start Date" />
-            </div>
-            <DatePicker title="End Date" />
-          </div>
-        </div>
+        <Grid container sx={{ padding: " 0px 15px", marginTop: "15px" }}>
+          <Grid item xs={9}>
+            <Grid container>
+              <Grid item xs={5}>
+                <TextField
+                  size="small"
+                  sx={{ width: "100%" }}
+                  placeholder="Search Order"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Search />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </Grid>
+              <Grid item xs={7} align="left">
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <h6
+                    style={{
+                      marginLeft: "40px",
+                      width: "150px",
+                      textAlign: "right",
+                    }}
+                  >
+                    Search By
+                  </h6>
+                  <div style={{ margin: "0px 20px" }}>
+                    <DatePicker title="Start Date" sx={{"& .MuiInputBase-input-MuiOutlinedInput-input":{
+                      fontSize:"12px"
+                    }}}/>
+                  </div>
+                  <DatePicker title="End Date" />
+                </div>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={3} align="right">
+            <OrderFulfilmentModal button="fulfill all" />
+          </Grid>
+        </Grid>
         {/* <OrderDataTable /> */}
         <OrderTableCell />
       </TabPanel>
@@ -240,11 +253,11 @@ export default function OrderTabs() {
         style={{
           bottom: 10,
           left: "45%",
-          padding: "5px 0",
+          padding: "20px 0 0 0",
           borderRadius: "8px",
           display: "flex",
           justifyContent: "center",
-          marginTop: "40px",
+          margin: "10px 0",
         }}
       >
         <Stack

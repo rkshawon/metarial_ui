@@ -47,61 +47,63 @@ export default function CreateBrand() {
           </div>
         </Grid>
         <Grid item xs={12} sm={9}>
-          <InputField
-            label="Title"
-            placeholder="Enter message title"
-            type="text"
-            size="small"
-            shrink={true}
-          />
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                sx={{
-                  margin: "10px 0",
-                  width: "100%",
-                  fontSize: "12px",
-                }}
-                label="Message"
-                color="secondary"
-                size="small"
-                placeholder="Enter message"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                multiline
-                rows={8}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <div className={styles.image_holder}>
-                <div className={styles.imagePreviewBox}>
-                  <img src={uploadLogo} alt="" />
-                  <div>
-                    <h6 componenet="label">Upload</h6>
-                    <input hidden accept="image/*" multiple type="file" />
+          <div style={{ padding: "0 20px" }}>
+            <InputField
+              label="Title"
+              placeholder="Enter message title"
+              type="text"
+              size="small"
+              shrink={true}
+            />
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  sx={{
+                    margin: "10px 0",
+                    width: "100%",
+                    fontSize: "12px",
+                  }}
+                  label="Message"
+                  color="secondary"
+                  size="small"
+                  placeholder="Enter message"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  multiline
+                  rows={8}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <div className={styles.image_holder}>
+                  <div className={styles.imagePreviewBox}>
+                    <img src={uploadLogo} alt="" />
+                    <div>
+                      <h6 componenet="label">Upload</h6>
+                      <input hidden accept="image/*" multiple type="file" />
+                    </div>
+                  </div>
+                  <div className="flexbox">
+                    <Button
+                      variant="gray"
+                      sx={{
+                        width: "123px",
+                      }}
+                    >
+                      Drafts
+                    </Button>
+                    <Button
+                      variant="lightblue"
+                      className="w-full"
+                      sx={{ width: "auto", borderRadius: "5px" }}
+                    >
+                      Save Changes
+                    </Button>
                   </div>
                 </div>
-                <div className="flexbox">
-                  <Button
-                    variant="gray"
-                    sx={{
-                      width: "123px",
-                    }}
-                  >
-                    Drafts
-                  </Button>
-                  <Button
-                    variant="lightblue"
-                    className="w-full"
-                    sx={{ width: "auto", borderRadius: "5px" }}
-                  >
-                    Save Changes
-                  </Button>
-                </div>
-              </div>
+              </Grid>
             </Grid>
-          </Grid>
+          </div>
         </Grid>
       </Grid>
     </div>

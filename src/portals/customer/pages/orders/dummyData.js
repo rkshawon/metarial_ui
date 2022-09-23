@@ -33,7 +33,7 @@ export const rows = [
     customer: "Matric Leach",
     cost: "5.49",
     shipping: "8.49",
-    fulfillment: "Fulfilled",
+    fulfillment: "Failed",
     order_status: "Unshipped",
   },
   {
@@ -67,7 +67,7 @@ export const rows = [
     customer: "Pattrick Leach",
     cost: "12.49",
     shipping: "8.49",
-    fulfillment: "Shipped",
+    fulfillment: "Cancelled",
     order_status: "Delivered",
   },
   {
@@ -135,7 +135,7 @@ export const rows = [
     customer: "Pattrick Leach",
     cost: "34.49",
     shipping: "8.49",
-    fulfillment: "Shipped",
+    fulfillment: "Failed",
     order_status: "Delivered",
   },
   {

@@ -8,6 +8,7 @@ import styles from "../../../../styles/customerStyles.module.css";
 import OrderTrackingDataTable from "./OrderTrackingDataTable";
 import ModifiedMenu from "../../components/ModifiedMenu";
 import {
+  Grid,
   InputAdornment,
   Pagination,
   PaginationItem,
@@ -18,6 +19,7 @@ import { Search } from "@mui/icons-material";
 import { chipColorDecisionMaker } from "../../../../utils/chipColorDecisionMaker";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import DatePicker from "../../components/DatePicker";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -60,7 +62,15 @@ export default function DisputeTabs() {
   };
 
   return (
-    <Box sx={{ width: "100%", marginTop: "30px" }}>
+    <Box
+      sx={{
+        paddingBottom: "20px",
+        width: "100%",
+        marginTop: "30px",
+        boxShadow:
+          " 0px 2px 2px rgb(145 158 171 / 20%), 0px 12px 24px -4px rgb(145 158 171 / 12%)",
+      }}
+    >
       <Box sx={{}}>
         <Tabs
           value={value}
@@ -178,9 +188,9 @@ export default function DisputeTabs() {
         </div> */}
       </Box>
       <TabPanel value={value} index={0}>
-        <div>
+        {/* <div>
           <TextField
-            sx={{ width: "100%" }}
+            sx={{ width: "98%", margin: "10px 0 0 1%" }}
             size="small"
             // sx={{ marginBottom: "10px" }}
             placeholder="Search products"
@@ -192,7 +202,38 @@ export default function DisputeTabs() {
               ),
             }}
           />
-        </div>
+        </div> */}
+        <Grid container sx={{ padding: " 0px 20px", marginTop: "15px" }}>
+          <Grid item xs={6}>
+            <TextField
+              size="small"
+              sx={{ width: "100%" }}
+              placeholder="Search Order"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Grid>
+          <Grid item xs={6} display="flex" alignItems="center">
+            <h6
+              style={{
+                marginLeft: "40px",
+                width: "150px",
+                textAlign: "right",
+              }}
+            >
+              Search By
+            </h6>
+            <div style={{ margin: "0px 20px" }}>
+              <DatePicker title="Start Date" />
+            </div>
+            <DatePicker title="End Date" />
+          </Grid>
+        </Grid>
         {/* <OrderDataTable /> */}
         <OrderTrackingDataTable />
       </TabPanel>

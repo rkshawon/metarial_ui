@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import DisputeRequestModalContent from "./DisputeRequestModalContent";
+import { Button } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -12,7 +13,7 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: "45%",
   textAlign: "center",
-  //   height: "600px",
+  // height:"90%",
   //   overflowY: "scroll",
   bgcolor: "background.paper",
   border: "none",
@@ -25,12 +26,14 @@ export default function DisputeRequestModal({ product }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [isClose, setClose] = React.useState(false)
+  const [isClose, setClose] = React.useState(false);
 
   return (
     <>
       {/* <img src={product.img} alt="product"  /> */}
-      <h4 onClick={handleOpen}>Dispute List</h4>
+      <Button variant="deepblue" onClick={handleOpen}>
+        Open a new dispute
+      </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -44,15 +47,19 @@ export default function DisputeRequestModal({ product }) {
       >
         <Fade in={open}>
           <Box sx={style} className="hide_scrollbar">
-            <DisputeRequestModalContent closeModal={handleClose} isClose={isClose} setClose={setClose}/>
-            <div style={{ position: "absolute", bottom: 10, left: 20 }}>
+            <DisputeRequestModalContent
+              closeModal={handleClose}
+              isClose={isClose}
+              setClose={setClose}
+            />
+            {/* <div style={{ position: "absolute", bottom: 10, left: 20 }}>
               <h6
                 style={{ textDecoration: "underline", cursor: "pointer" }}
                 onClick={handleClose}
               >
                 Cancel
               </h6>
-            </div>
+            </div> */}
           </Box>
         </Fade>
       </Modal>

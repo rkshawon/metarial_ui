@@ -202,6 +202,7 @@ overflow:hidden
 ::-webkit-scrollbar-thumb {
   background: rgb(170, 174, 179);
   border-radius: 10px;
+  height:5px;
 }
 
 /* Handle on hover */
@@ -272,11 +273,11 @@ input {
   background-color: green;
 }
 
-label:hover,
+/* label:hover,
 .upload-btn:hover {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-}
+} */
 
 .error {
   text-align: center;
@@ -284,4 +285,9 @@ label:hover,
 
 .error span {
   color: red;
+}
+
+/* data grid spacing  */
+.css-19kzrtu {
+  padding: 0px !important; 
 }

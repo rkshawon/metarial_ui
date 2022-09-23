@@ -410,18 +410,37 @@ export default function CollapsableSidebar({ sidebarUtil }) {
         <div
           className="flexbox"
           style={{
-            marginBottom: "50px",
             display: "flex",
+            marginBottom:"50px",
             justifyContent: `${sidebarExpand ? "flex-start" : "center"}`,
-            marginLeft: `${sidebarExpand ? "12%" : "0"}`,
-            position: "absolute",
+            // marginLeft: `${sidebarExpand ? "5%" : "0"}`,
+            position: `${open ? 'relative' : 'absolute'}`,
             bottom: 20,
             width: "100%",
+            // marginRight:"20px"
           }}
         >
-          <NavLink
+          <ListItemButton
+              selected={location === "setting"}
+              sx={{
+                borderRadius: "5px",
+                padding: `${sidebarExpand ? `10px 30px` : "13px 20px"}`,
+                "&:hover, &:focus": {
+                  color: "#8D40FF",
+                  background: "rgba(142, 65, 254, 0.11)",
+                  fontWeight: 600,
+                },
+                "&.Mui-selected": {
+                  color: "#8D40FF",
+                  background: "rgba(142, 65, 254, 0.11)",
+                  fontWeight: 600,
+                },
+               width:"100%",
+               margin:"0 5%"
+              }}
+            >
+          <Link
             to="/customer/setting"
-            className={(navData) => (navData.isActive ? "active" : "")}
             style={{
               textDecoration: "none",
               color: "inherit",
@@ -430,20 +449,22 @@ export default function CollapsableSidebar({ sidebarUtil }) {
               justifyContent: "space-between",
             }}
           >
-            <div style={{ display: "flex" }}>
-              <Settings style={{ marginRight: 5 }} />
-              {sidebarExpand && (
-                <h5
-                  style={{
-                    fontSize: "14px",
-                    fontWeight: 400,
-                  }}
-                >
-                  Settings
-                </h5>
-              )}
-            </div>
-          </NavLink>
+            
+              <div style={{ display: "flex" }}>
+                <Settings style={{ marginRight: 5 }} />
+                {sidebarExpand && (
+                  <h5
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: 400,
+                    }}
+                  >
+                    Settings
+                  </h5>
+                )}
+              </div>
+          </Link>
+            </ListItemButton>
         </div>
       </Drawer>
     </Box>
